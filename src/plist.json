@@ -1,0 +1,26 @@
+[
+    {
+        "title":"Dynamic cards",
+        "stack":["HTML","CSS","JS"],
+        "info":"Divisions expands and unfold into card like structure, Each card has some details associated to it. ",
+        "link":"https://github.com/Bibhuti05/Dynamic-Cards"
+    },
+    {
+        "title":"PassKey Genrator",
+        "stack":["HTML","CSS","JS"],
+        "info":"Generates Random passwords based on your input. made using vanilla JS. You can manage your passwords for different websites",
+        "link":""
+    },
+    {
+        "title":"NoteZ",
+        "stack":["HTML","CSS","JS","React"],
+        "info":"A Simple Notes Apllication for GenZ users. You can create Notes upto 250 chracters and it is saved into local storage in JSON",
+        "link":""
+    },
+    {
+        "title":"Open News",
+        "stack":["HTML","CSS","JS","React"],
+        "info":"Very Simple news application to fetch news from news API. Built with React and Material UI as component library",
+        "link":"https://github.com/Bibhuti05/Open-News"
+    }
+]
