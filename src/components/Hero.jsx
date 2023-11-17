@@ -27,15 +27,16 @@ export default function Hero() {
           />
         </div>
         <div className="mt-10">
-          <button className="bg-green-500 w-fit px-10 py-3 rounded-md text-black font-bold hover:scale-110 hover:bg-green-300 transition-all duration-75 shadow-lg shadow-green-500 hover:shadow-none">
-            Projects
+          <button className="bg-green-500 w-fit px-10 py-3 rounded-md text-black font-bold hover:scale-110 hover:bg-green-300 transition-all duration-75 shadow-lg shadow-green-500 hover:shadow-none"
+          >
+            <a href="#Projects">Projects</a>
           </button>
         </div>
 
-        <div className=" flex justify-evenly md:justify-center mt-40">
-          <VscGithub size={40} className="md:mx-10" />
-          <FaLinkedin size={40} className="md:mx-10" />
-          <SiGmail size={40} className="md:mx-10" />
+        <div className=" flex justify-evenly md:justify-center mt-40 ">
+          <a href="https://github.com/Bibhuti05"><VscGithub size={40} className="md:mx-10 cursor-pointer hover:scale-150  transition-all duration-200" /></a>
+          <a href="https://www.linkedin.com/in/bibhuticodes/"><FaLinkedin size={40} className="md:mx-10 cursor-pointer hover:scale-150 transition-all duration-200" /></a>
+          <a href="mailto:bibhuticodes@gmail.com"><SiGmail size={40} className="md:mx-10 cursor-pointer hover:scale-150 transition-all duration-200" /></a>
         </div>
       </div>
     </div>
