@@ -10,7 +10,7 @@ function App() {
     <div className="font-sans">
       <Navbar />
       <Hero />
-      <section id="Projects" className="flex justify-center mt-32 flex-wrap">
+      <section id="Projects" className="flex justify-center mt-40 flex-wrap">
         {plist.map((proj) => {
           return (
             <Projects
