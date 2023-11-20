@@ -6,16 +6,14 @@ import plist from "./plist.json";
 import { useState, useEffect } from "react";
 
 function App() {
+  let [showNav, setShowNav] = useState(true);
+
+  /*
   //capture the scroll value
   const [scrollData, setScrollData] = useState({
     y: 0,
     lasty: 0,
   });
-
-  let [showNav, setShowNav] = useState(true);
-
-    
-  
 
   useEffect(()=>{
     function handelscroll(){
@@ -50,7 +48,7 @@ function App() {
 
   },[scrollData])
   
-  
+  */
 
   return (
     <div className="font-sans">
