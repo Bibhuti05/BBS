@@ -16,11 +16,11 @@ export default function Hero() {
         </p>
         <div className="">
           <p className="text-[white] font-bold md:text-3xl sm:text-2xl text-xl">
-          I build intuitive, performant and stable 
+          I build performant, stable and critical software solutions such as
           </p>
           <Typed
             className="text-[grey] font-bold md:text-3xl sm:text-2xl text-xl ml-2"
-            strings={["Web Apps", "Mobile Apps", "Desktop Apps" ]}
+            strings={["Backend", "APIs", "Robotics", "IOT"]}
             typeSpeed={70}
             backSpeed={40}
             loop
