@@ -63,17 +63,17 @@ const Experience: React.FC = () => {
     <section id="experience" className="py-20 relative">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">
             Work <span className="text-primary-600 dark:text-primary-400">Experience</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             My professional journey and the value I've delivered to companies and clients.
           </p>
         </div>
 
         <div ref={containerRef} className="relative max-w-4xl mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-800"></div>
+          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-800"></div>
           
           {/* Sliding Glow Dot */}
           <div 
@@ -94,7 +94,7 @@ const Experience: React.FC = () => {
               }`}
             >
               {/* Checkpoint Dot */}
-              <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-white dark:bg-gray-900 border-4 border-primary-500 z-10 flex items-center justify-center shadow-sm">
+              <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border-4 border-primary-500 z-10 flex items-center justify-center shadow-sm">
                  <div className="w-2.5 h-2.5 rounded-full bg-primary-500"></div>
               </div>
 

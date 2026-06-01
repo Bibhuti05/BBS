@@ -7,7 +7,16 @@ import {
   Layout,
   Server,
   Smartphone,
+  Github,
+  Twitter,
+  Linkedin,
 } from "lucide-react";
+
+export const SOCIAL_LINKS = [
+  { name: "GitHub", href: "https://github.com/Bibhuti05", icon: Github },
+  { name: "X / Twitter", href: "https://x.com/bibhuticodes", icon: Twitter },
+  { name: "LinkedIn", href: "https://www.linkedin.com/feed/", icon: Linkedin },
+];
 
 export const NAV_LINKS = [
   { name: "Home", href: "#hero" },

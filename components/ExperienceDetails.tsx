@@ -91,7 +91,7 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
         /* z-[70] ensures it sits above the backdrop */
         <div 
           className={`
-            fixed bottom-0 left-0 right-0 z-[70] bg-white dark:bg-gray-800 
+            fixed bottom-0 left-0 right-0 z-[70] bg-white dark:bg-zinc-800 
             rounded-t-[2rem] shadow-2xl overflow-hidden flex flex-col
             transition-transform duration-500 ease-out h-[75vh] will-change-transform
             ${isAnimating && !isClosing ? 'translate-y-0' : 'translate-y-full'}
@@ -99,14 +99,14 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
           onClick={(e) => e.stopPropagation()}
         >
           {/* Drag Handle Area - Solid background to cover scrolling content */}
-          <div className="w-full flex justify-center pt-4 pb-2 shrink-0 relative z-20 bg-white dark:bg-gray-800" onClick={handleClose}>
-            <div className="w-12 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full" />
+          <div className="w-full flex justify-center pt-4 pb-2 shrink-0 relative z-20 bg-white dark:bg-zinc-800" onClick={handleClose}>
+            <div className="w-12 h-1.5 bg-zinc-300 dark:bg-zinc-600 rounded-full" />
           </div>
 
           {/* Close Button */}
           <button 
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300 z-30"
+            className="absolute top-4 right-4 p-2 bg-zinc-100 dark:bg-zinc-700 rounded-full text-zinc-600 dark:text-zinc-300 z-30"
           >
             <X size={20} />
           </button>
@@ -114,7 +114,7 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
           {/* Content Wrapper with Gradient Fade */}
           <div className="relative flex-1 overflow-hidden">
              {/* Top Fade Gradient - Creates the inset shadow/fade effect */}
-             <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white dark:from-gray-800 to-transparent z-10 pointer-events-none"></div>
+             <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white dark:from-zinc-800 to-transparent z-10 pointer-events-none"></div>
 
              {/* Scrollable Content */}
              <div className="p-6 overflow-y-auto h-full pb-20 pt-2">
@@ -125,7 +125,7 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
                       className="w-16 h-16 rounded-xl shadow-md object-cover"
                     />
                     <div>
-                      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{experience.role}</h2>
+                      <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">{experience.role}</h2>
                       <p className="text-primary-600 dark:text-primary-400 font-medium">{experience.company}</p>
                     </div>
                 </div>
@@ -136,17 +136,17 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Overview</h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-2">Overview</h3>
+                    <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed">
                       {experience.description}
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Key Responsibilities</h3>
+                    <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-3">Key Responsibilities</h3>
                     <ul className="space-y-3">
                       {experience.responsibilities.map((resp, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
+                        <li key={idx} className="flex items-start gap-3 text-zinc-600 dark:text-zinc-300">
                           <CheckCircle2 className="w-5 h-5 text-primary-500 shrink-0 mt-0.5" />
                           <span>{resp}</span>
                         </li>
@@ -161,7 +161,7 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
         /* --- DESKTOP EXPANDING CARD --- */
         <div 
           style={getDesktopStyles()}
-          className="bg-white dark:bg-gray-800 shadow-2xl rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col md:flex-row"
+          className="bg-white dark:bg-zinc-800 shadow-2xl rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col md:flex-row"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -169,8 +169,8 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
             onClick={handleClose}
             className={`
               absolute top-4 right-4 z-10 p-2 rounded-full 
-              bg-gray-100/50 dark:bg-gray-700/50 backdrop-blur-sm
-              text-gray-600 dark:text-gray-300 hover:bg-red-100 hover:text-red-500 transition-colors
+              bg-zinc-100/50 dark:bg-zinc-700/50 backdrop-blur-sm
+              text-zinc-600 dark:text-zinc-300 hover:bg-red-100 hover:text-red-500 transition-colors
               ${isAnimating && !isClosing ? 'opacity-100 delay-300' : 'opacity-0'}
             `}
           >
@@ -186,25 +186,25 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
                    <span>{experience.period}</span>
                 </div>
                 
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2">
                   {experience.role}
                 </h2>
-                <h3 className="text-xl text-gray-600 dark:text-gray-300 mb-6">
+                <h3 className="text-xl text-zinc-600 dark:text-zinc-300 mb-6">
                   at {experience.company}
                 </h3>
 
                 <div className="prose dark:prose-invert max-w-none">
-                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Role Overview</h4>
-                   <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                   <h4 className="text-lg font-semibold text-zinc-900 dark:text-white mb-3">Role Overview</h4>
+                   <p className="text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
                      {experience.description}
                    </p>
 
-                   <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Key Responsibilities & Achievements</h4>
+                   <h4 className="text-lg font-semibold text-zinc-900 dark:text-white mb-3">Key Responsibilities & Achievements</h4>
                    <ul className="space-y-4">
                      {experience.responsibilities.map((resp, idx) => (
                        <li key={idx} className="flex items-start gap-3">
                          <div className="mt-1.5 w-2 h-2 rounded-full bg-primary-500 shrink-0" />
-                         <span className="text-gray-600 dark:text-gray-300">{resp}</span>
+                         <span className="text-zinc-600 dark:text-zinc-300">{resp}</span>
                        </li>
                      ))}
                    </ul>
@@ -213,12 +213,12 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
           </div>
 
           {/* Right Side: Company Branding (Visible only on expansion) */}
-          <div className="hidden md:flex w-1/3 bg-gray-50 dark:bg-gray-900/50 items-center justify-center p-10 border-l border-gray-100 dark:border-gray-700">
+          <div className="hidden md:flex w-1/3 bg-zinc-50 dark:bg-zinc-900/50 items-center justify-center p-10 border-l border-zinc-100 dark:border-zinc-700">
             <div className={`flex flex-col items-center text-center transition-all duration-500 delay-200 ${isAnimating && !isClosing ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-               <div className="w-32 h-32 rounded-2xl bg-white dark:bg-gray-800 shadow-lg p-4 mb-6 flex items-center justify-center">
+               <div className="w-32 h-32 rounded-2xl bg-white dark:bg-zinc-800 shadow-lg p-4 mb-6 flex items-center justify-center">
                   <img src={experience.logo} alt={experience.company} className="w-full h-full object-contain" />
                </div>
-               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">{experience.company}</h3>
+               <h3 className="text-xl font-bold text-zinc-800 dark:text-zinc-200">{experience.company}</h3>
                <a href={experience.companyUrl} className="mt-4 text-sm text-primary-600 hover:underline">Visit Company Website</a>
             </div>
           </div>

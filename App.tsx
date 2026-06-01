@@ -12,7 +12,7 @@ import MobileNav from './components/MobileNav';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen text-gray-800 dark:text-gray-200 transition-colors duration-500 font-sans">
+    <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans">
       <Background />
       
       <div className="relative z-0 flex flex-col">

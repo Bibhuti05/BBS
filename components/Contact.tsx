@@ -35,10 +35,10 @@ const Contact: React.FC = () => {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">
             Get in <span className="text-primary-600 dark:text-primary-400">Touch</span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
             Have a project in mind or want to say hello? I'd love to hear from you.
           </p>
         </div>
@@ -46,42 +46,42 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-8">
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:border-primary-500 transition-colors">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 hover:border-primary-500 transition-colors">
               <div className="p-3 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                 <Mail size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Email</h3>
-                <p className="text-gray-600 dark:text-gray-400">bibhuticodes@gmail.com</p>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">Email</h3>
+                <p className="text-zinc-600 dark:text-zinc-400">bibhuticodes@gmail.com</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:border-primary-500 transition-colors">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 hover:border-primary-500 transition-colors">
               <div className="p-3 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                 <Phone size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Phone</h3>
-                <p className="text-gray-600 dark:text-gray-400">+91 9644588233</p>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">Phone</h3>
+                <p className="text-zinc-600 dark:text-zinc-400">+91 9644588233</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700 hover:border-primary-500 transition-colors">
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm border border-zinc-100 dark:border-zinc-700 hover:border-primary-500 transition-colors">
               <div className="p-3 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400">
                 <MapPin size={24} />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">Location</h3>
-                <p className="text-gray-600 dark:text-gray-400">Banglore, India</p>
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-white mb-1">Location</h3>
+                <p className="text-zinc-600 dark:text-zinc-400">Banglore, India</p>
               </div>
             </div>
           </div>
 
           {/* Form */}
-          <div className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700">
+          <div className="bg-white dark:bg-zinc-800 p-8 rounded-3xl shadow-lg border border-zinc-100 dark:border-zinc-700">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                   Name
                 </label>
                 <input
@@ -91,12 +91,12 @@ const Contact: React.FC = () => {
                   value={formState.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
                   placeholder="John Doe"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                   Email
                 </label>
                 <input
@@ -106,12 +106,12 @@ const Contact: React.FC = () => {
                   value={formState.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
                   placeholder="john@example.com"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
                   Message
                 </label>
                 <textarea
@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
                   onChange={handleChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="Your message..."
                 ></textarea>
               </div>

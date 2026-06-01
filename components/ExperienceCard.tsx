@@ -20,8 +20,8 @@ const ExperienceCard = forwardRef<HTMLDivElement, ExperienceCardProps>(
         <div 
           onClick={onClick}
           className={`
-            bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm hover:shadow-md 
-            border border-gray-100 dark:border-gray-700 group cursor-pointer 
+            bg-white dark:bg-zinc-800 p-6 rounded-2xl shadow-sm hover:shadow-md 
+            border border-zinc-100 dark:border-zinc-700 group cursor-pointer 
             transition-all duration-300 hover:scale-[1.02]
             ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}
           `}
@@ -30,13 +30,13 @@ const ExperienceCard = forwardRef<HTMLDivElement, ExperienceCardProps>(
             <Briefcase size={14} />
             {experience.period}
           </div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-primary-500 transition-colors">
+          <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1 group-hover:text-primary-500 transition-colors">
             {experience.role}
           </h3>
-          <h4 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-3">
+          <h4 className="text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-3">
             {experience.company}
           </h4>
-          <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3">
+          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed line-clamp-3">
             {experience.description}
           </p>
           <div className={`mt-4 flex ${index % 2 === 0 ? 'md:justify-end' : 'justify-start'}`}>
