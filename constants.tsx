@@ -43,10 +43,28 @@ export const SKILLS: Skill[] = [
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: 4,
+    role: "Technical Support Consultant",
+    company: "Adobe",
+    period: "Mar 2026 - Apr 2026",
+    description:
+      "Technical Support Engineer – Adobe (Noida). On OMHRA Payroll.",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyTWyFb8AA31Ka6oQuAH0Fb1LJnLUsv5wWuw&s",
+    responsibilities: [
+      "Provided advanced technical support to enterprise clients on Adobe Experience Cloud, with deep specialization in Adobe Audience Manager.",
+      "Designed and implemented Proof of Concept (POC) solutions using Adobe Web SDK and Edge Network for real-time data collection and audience integration.",
+      "Expert in Audience Manager data model — built and troubleshot complex Signals, Traits, Segments, including Boolean logic, recency/frequency rules, and TTL configurations.",
+      "Managed backend support operations including DCS (Data Collection Servers), profile merging, ID synchronization, and real-time trait/segment qualification issues.",
+      "Diagnosed and resolved complex integration issues involving DIL, Web SDK, Server-to-Server (S2S) data ingestion, and destination activations.",
+      "Supported clients on Audience Manager REST APIs, Bulk Management Tool (BAAM), and integrations with Adobe Analytics, Target, and Real-Time CDP.",
+    ],
+    companyUrl: "https://www.adobe.com/",
+  },
+  {
     id: 1,
     role: "Software Development Engineer (Front-end)",
     company: "Zemuria.com",
-    period: "2024 - Present",
+    period: "2024 - 2026",
     description: "Core developer of mysamantha.ai web application",
     logo: "https://pbs.twimg.com/profile_images/1713211566680637440/Uent8cGr_400x400.jpg",
     responsibilities: [
