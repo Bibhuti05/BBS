@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface Project {
   id: number;
   title: string;
@@ -22,8 +20,6 @@ export interface Experience {
 
 export interface Skill {
   name: string;
-  icon: React.ReactNode;
-  level: number; // 0-100
 }
 
 export enum Theme {

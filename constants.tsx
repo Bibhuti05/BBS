@@ -1,12 +1,5 @@
-import React from "react";
 import { Project, Experience, Skill } from "./types";
 import {
-  Code2,
-  Database,
-  Globe,
-  Layout,
-  Server,
-  Smartphone,
   Github,
   Twitter,
   Linkedin,
@@ -27,12 +20,25 @@ export const NAV_LINKS = [
 ];
 
 export const SKILLS: Skill[] = [
-  { name: "React / Next.js", icon: <Code2 className="w-6 h-6" />, level: 95 },
-  { name: "TypeScript", icon: <Layout className="w-6 h-6" />, level: 90 },
-  { name: "Tailwind CSS", icon: <Globe className="w-6 h-6" />, level: 95 },
-  { name: "Node.js", icon: <Server className="w-6 h-6" />, level: 85 },
-  { name: "PostgreSQL", icon: <Database className="w-6 h-6" />, level: 80 },
-  { name: "React Native", icon: <Smartphone className="w-6 h-6" />, level: 75 },
+  { name: "React / Next.js" },
+  { name: "TypeScript" },
+  { name: "Tailwind CSS" },
+  { name: "React Native" },
+  { name: "Node.js" },
+  { name: "JavaScript" },
+  { name: "PostgreSQL" },
+  { name: "MySQL" },
+  { name: "SQLite" },
+  { name: "MongoDB" },
+  { name: "Redis" },
+  { name: "Prisma" },
+  { name: "Socket.io" },
+  { name: "GitHub" },
+  { name: "Git" },
+  { name: "npm" },
+  { name: "Bun" },
+  { name: "HTML" },
+  { name: "CSS" },
 ];
 
 export const EXPERIENCES: Experience[] = [

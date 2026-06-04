@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import emailjs from '@emailjs/browser';
+import { useToast } from './toast/ToastContext';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,6 +17,7 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { addToast } = useToast();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormState({
@@ -23,17 +26,34 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    setTimeout(() => {
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formState.name,
+          to_name: 'Bibhuti', // Or your name
+          from_email: formState.email,
+          message: formState.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
       setIsSubmitting(false);
       setIsSubmitted(true);
       setFormState({ name: '', email: '', message: '' });
+      addToast('Message sent successfully! We will get back to you soon.', 'success');
       
       setTimeout(() => setIsSubmitted(false), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      setIsSubmitting(false);
+      addToast('Failed to send message. Please try again later.', 'error');
+    }
   };
 
   const contactItems = [
@@ -95,12 +115,39 @@ const Contact: React.FC = () => {
           </motion.div>
 
           <motion.div
-            className="bg-white dark:bg-zinc-800 p-8 rounded-3xl shadow-lg border border-zinc-100 dark:border-zinc-700"
-            initial={{ opacity: 0, x: 50 }}
+            className="bg-white dark:bg-zinc-800 p-8 rounded-3xl shadow-lg border border-zinc-100 dark:border-zinc-700 relative overflow-hidden"
+            initial={{ opacity: 0, x: 50, boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)" }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
+            animate={
+              isSubmitted
+                ? {
+                    boxShadow: [
+                      "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                      "0 0 0 12px rgba(16, 185, 129, 0.4)",
+                      "0 0 0 30px rgba(16, 185, 129, 0)",
+                    ],
+                  }
+                : {}
+            }
           >
+            <AnimatePresence>
+              {isSubmitted && (
+                <motion.div
+                  className="absolute inset-0 z-50 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.4), transparent)",
+                    width: "200%",
+                  }}
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "50%" }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                />
+              )}
+            </AnimatePresence>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">

@@ -26,8 +26,17 @@ const Hero: React.FC = () => {
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="flex-shrink-0 mb-10" variants={fadeUp} transition={{ duration: 0.6 }}>
-          <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+        <motion.div className="flex-shrink-0 mb-8" variants={fadeUp} transition={{ duration: 0.6 }}>
+          <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto">
+            <motion.div
+              className="absolute inset-0 rounded-full opacity-50 blur-xl"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+              style={{
+                background:
+                  "conic-gradient(from 0deg, #10b981, #059669, #34d399, #047857, #a7f3d0, #10b981)",
+              }}
+            ></motion.div>
             <motion.div
               className="absolute inset-0 rounded-full"
               animate={{ rotate: 360 }}
@@ -35,18 +44,18 @@ const Hero: React.FC = () => {
               style={{
                 background:
                   "conic-gradient(from 0deg, #10b981, #059669, #34d399, #047857, #a7f3d0, #10b981)",
-                padding: "4px",
+                padding: "3px",
               }}
             >
               <div className="w-full h-full rounded-full bg-white dark:bg-dark-bg"></div>
             </motion.div>
-            <div className="absolute inset-[4px] rounded-full bg-white dark:bg-dark-bg"></div>
+            <div className="absolute inset-[3px] rounded-full bg-white dark:bg-dark-bg"></div>
             <motion.div
-              className="absolute inset-[8px] rounded-full overflow-hidden bg-gradient-to-br from-primary-100 to-emerald-100 dark:from-primary-900 dark:to-emerald-900 flex items-center justify-center"
+              className="absolute inset-[6px] rounded-full overflow-hidden bg-gradient-to-br from-primary-50 to-emerald-100/50 dark:from-primary-900/40 dark:to-emerald-900/40 flex items-center justify-center border border-primary-100 dark:border-primary-800/50"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <span className="text-6xl md:text-7xl font-bold text-primary-600/20 dark:text-primary-400/20 select-none">
+              <span className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary-400 to-emerald-600 dark:from-primary-400 dark:to-emerald-500 select-none">
                 B
               </span>
             </motion.div>
@@ -54,13 +63,16 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.div
-          className="inline-flex mb-6 px-4 py-1.5 rounded-full border border-primary-200 dark:border-primary-800 bg-primary-50/50 dark:bg-primary-900/20 backdrop-blur-sm items-center gap-2 w-fit"
+          className="inline-flex mb-6 px-4 py-2 rounded-full border border-primary-200/50 dark:border-primary-800/50 bg-primary-50/80 dark:bg-primary-900/30 backdrop-blur-md items-center gap-2.5 w-fit shadow-sm shadow-primary-500/5 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
           variants={fadeUp}
           transition={{ duration: 0.5 }}
         >
-          <div className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></div>
-          <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
-            Open to new opportunities!
+          <div className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500"></span>
+          </div>
+          <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
+            Open to new opportunities
           </span>
         </motion.div>
 
@@ -74,23 +86,23 @@ const Hero: React.FC = () => {
           </span>
         </motion.h1>
 
-        <motion.p className="text-xl md:text-2xl font-semibold text-zinc-700 dark:text-zinc-300 mb-2" variants={fadeUp} transition={{ duration: 0.5 }}>
-          Frontend Developer
+        <motion.p className="text-xl md:text-2xl font-bold text-zinc-700 dark:text-zinc-300 mb-2 tracking-wide" variants={fadeUp} transition={{ duration: 0.5 }}>
+          Full Stack Developer
         </motion.p>
-        <motion.p className="text-base md:text-lg text-primary-600 dark:text-primary-400 font-medium mb-4 italic" variants={fadeUp} transition={{ duration: 0.5 }}>
-          From pixel to production
+        <motion.p className="text-base md:text-lg text-primary-600 dark:text-primary-400 font-medium mb-5 italic" variants={fadeUp} transition={{ duration: 0.5 }}>
+          From idea to production
         </motion.p>
 
-        <motion.div className="flex items-center gap-2 mb-4 justify-center" variants={fadeUp} transition={{ duration: 0.5 }}>
-          <MapPin size={16} className="text-zinc-500 dark:text-zinc-400" />
-          <span className="text-sm text-zinc-500 dark:text-zinc-400">India</span>
+        <motion.div className="flex items-center gap-2 mb-5 justify-center bg-zinc-100 dark:bg-zinc-800/50 w-fit mx-auto px-3 py-1.5 rounded-full" variants={fadeUp} transition={{ duration: 0.5 }}>
+          <MapPin size={14} className="text-primary-500 dark:text-primary-400" />
+          <span className="text-sm font-medium text-zinc-600 dark:text-zinc-300">India</span>
         </motion.div>
 
-        <motion.p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 mb-8 max-w-xl mx-auto" variants={fadeUp} transition={{ duration: 0.5 }}>
-          Specializing in React, Next.js & TypeScript. Building products with
-          real-world{" "}
-          <span className="text-primary-600 dark:text-primary-400 font-semibold">
+        <motion.p className="text-base md:text-lg text-zinc-600 dark:text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed" variants={fadeUp} transition={{ duration: 0.5 }}>
+          Specializing in React, Next.js, Node.js & TypeScript. Architecting robust, scalable solutions with real-world{" "}
+          <span className="text-primary-600 dark:text-primary-400 font-semibold relative inline-block">
             Impact
+            <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500/30 rounded-full"></span>
           </span>
           .
         </motion.p>

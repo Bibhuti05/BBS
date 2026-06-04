@@ -110,15 +110,6 @@ const Experience: React.FC = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
-              <motion.div
-                className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border-4 border-primary-500 z-10 flex items-center justify-center shadow-sm"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 300, delay: index * 0.15 + 0.2 }}
-              >
-                <div className="w-2.5 h-2.5 rounded-full bg-primary-500"></div>
-              </motion.div>
 
               <div className="w-full md:w-1/2"></div>
 
