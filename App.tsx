@@ -9,6 +9,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import MobileNav from './components/MobileNav';
+import InvertedCursor from './components/InvertedCursor';
 import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
 
@@ -18,7 +19,8 @@ const App: React.FC = () => {
       <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans">
         <Background />
         <ToastContainer />
-      
+        <InvertedCursor />
+
       <div className="relative z-0 flex flex-col">
         <Header />
         

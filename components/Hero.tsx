@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, MapPin } from "lucide-react";
 import { SOCIAL_LINKS } from "../constants";
+import Avatar3D from "./Avatar3D";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,47 +22,22 @@ const Hero: React.FC = () => {
       className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
     >
       <motion.div
-        className="container mx-auto px-6 z-10 text-center"
+        className="container mx-auto px-6 z-10 flex flex-col items-center text-center gap-8"
         variants={stagger}
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="flex-shrink-0 mb-8" variants={fadeUp} transition={{ duration: 0.6 }}>
-          <div className="relative w-48 h-48 md:w-56 md:h-56 mx-auto">
-            <motion.div
-              className="absolute inset-0 rounded-full opacity-50 blur-xl"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              style={{
-                background:
-                  "conic-gradient(from 0deg, #10b981, #059669, #34d399, #047857, #a7f3d0, #10b981)",
-              }}
-            ></motion.div>
-            <motion.div
-              className="absolute inset-0 rounded-full"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              style={{
-                background:
-                  "conic-gradient(from 0deg, #10b981, #059669, #34d399, #047857, #a7f3d0, #10b981)",
-                padding: "3px",
-              }}
-            >
-              <div className="w-full h-full rounded-full bg-white dark:bg-dark-bg"></div>
-            </motion.div>
-            <div className="absolute inset-[3px] rounded-full bg-white dark:bg-dark-bg"></div>
-            <motion.div
-              className="absolute inset-[6px] rounded-full overflow-hidden bg-gradient-to-br from-primary-50 to-emerald-100/50 dark:from-primary-900/40 dark:to-emerald-900/40 flex items-center justify-center border border-primary-100 dark:border-primary-800/50"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <span className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-primary-400 to-emerald-600 dark:from-primary-400 dark:to-emerald-500 select-none">
-                B
-              </span>
-            </motion.div>
-          </div>
+        {/* 3D Model */}
+        <motion.div 
+          className="w-full max-w-lg" 
+          variants={fadeUp} 
+          transition={{ duration: 0.6 }}
+        >
+          <Avatar3D />
         </motion.div>
 
+        {/* Text Content */}
+        <div className="w-full">
         <motion.div
           className="inline-flex mb-6 px-4 py-2 rounded-full border border-primary-200/50 dark:border-primary-800/50 bg-primary-50/80 dark:bg-primary-900/30 backdrop-blur-md items-center gap-2.5 w-fit shadow-sm shadow-primary-500/5 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
           variants={fadeUp}
@@ -142,6 +118,7 @@ const Hero: React.FC = () => {
             </motion.a>
           ))}
         </motion.div>
+        </div>
       </motion.div>
 
       <motion.div
