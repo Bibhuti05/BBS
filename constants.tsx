@@ -114,38 +114,32 @@ export const EXPERIENCES: Experience[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "EcoTrack Analytics",
+    title: "UfdLoader",
     description:
-      "A real-time dashboard for tracking environmental data using D3.js and React. Features interactive maps and data visualization.",
-    tags: ["React", "D3.js", "Tailwind"],
-    link: "#",
-    image: "https://picsum.photos/600/400?random=1",
+      "Terminal-based download accelerator built with multi-connection technology. Features parallel segmented downloads, resume support, cross-platform native binaries, real-time terminal UI with per-connection progress bars, and an interactive folder picker.",
+    tags: ["Bun", "TypeScript", "React", "Ink", "Axios"],
+    link: "https://1in1b.github.io/ufd/",
+    github: "https://github.com/1IN1B/ufd",
+    image: "/assets/ufdloader.png",
   },
   {
     id: 2,
-    title: "Nexus Chat App",
+    title: "Xplore",
     description:
-      "A real-time messaging platform with E2E encryption. Built with Socket.io and Node.js, featuring a modern glassmorphism UI.",
-    tags: ["Socket.io", "Node.js", "MongoDB"],
-    link: "#",
-    image: "https://picsum.photos/600/400?random=2",
+      "Minimalist anonymous video and text chat application — an Omegle-inspired clone built with Next.js, WebRTC, and Socket.io. Features peer-to-peer video/audio streaming, real-time messaging, skip-to-next-partner, and dark/light theme support.",
+    tags: ["Next.js", "WebRTC", "Socket.io", "TypeScript", "Tailwind CSS"],
+    link: "https://xplore-production.up.railway.app/",
+    github: "https://github.com/1IN1B/xplore",
+    image: "/assets/xplore.png",
   },
   {
     id: 3,
-    title: "Cryptofolio",
+    title: "TicketGo",
     description:
-      "Cryptocurrency portfolio tracker connecting to multiple exchanges via API. Includes price alerts and P&L analysis.",
-    tags: ["TypeScript", "Next.js", "API"],
-    link: "#",
-    image: "https://picsum.photos/600/400?random=3",
-  },
-  {
-    id: 4,
-    title: "TaskMaster AI",
-    description:
-      "Productivity application that uses AI to prioritize tasks based on deadlines and user habits.",
-    tags: ["OpenAI", "React", "Firebase"],
-    link: "#",
-    image: "https://picsum.photos/600/400?random=4",
+      "Modern ticket management system with authentication, role-based access, form validation, and database integration. Built with Next.js, TypeScript, MySQL, NextAuth, Radix UI, and Zustand for state management.",
+    tags: ["Next.js", "TypeScript", "MySQL", "NextAuth", "Zustand"],
+    link: "https://ticketgo-wine.vercel.app/",
+    github: "https://github.com/1IN1B/ticketgo",
+    image: "/assets/ticketgo.png",
   },
 ];
