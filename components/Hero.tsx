@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6" variants={fadeUp} transition={{ duration: 0.5 }}>
           <motion.a
-            href="https://drive.google.com/file/d/1H8IXBW2BYOO1j44XKTkMvK-kxALLphRq/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1L2_U8WJtk6JSefjhCtb5b6RbWzTuvRMn/view?usp=sharing"
             className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
@@ -121,13 +121,6 @@ const Hero: React.FC = () => {
         </div>
       </motion.div>
 
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-primary-500 dark:text-primary-400 opacity-70"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <ChevronDown size={24} />
-      </motion.div>
     </section>
   );
 };
