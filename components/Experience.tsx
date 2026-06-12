@@ -95,7 +95,7 @@ const Experience: React.FC = () => {
             style={{
               top: '0%',
               opacity: 0,
-              boxShadow: '0 0 15px 5px rgba(16, 185, 129, 0.6), 0 0 30px 10px rgba(16, 185, 129, 0.3)'
+              boxShadow: '0 0 15px 5px rgba(239, 68, 68, 0.6), 0 0 30px 10px rgba(239, 68, 68, 0.3)'
             }}
           />
 

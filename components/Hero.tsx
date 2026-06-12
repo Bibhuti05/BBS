@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
         </motion.p>
         <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight leading-tight" variants={fadeUp} transition={{ duration: 0.6 }}>
           Bibhuti Bhushan{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-emerald-700 dark:from-primary-400 dark:to-emerald-600">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-rose-700 dark:from-primary-400 dark:to-rose-600">
             Saha
           </span>
         </motion.h1>
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
             Impact
             <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary-500/30 rounded-full"></span>
           </span>
-          .
+          . 
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6" variants={fadeUp} transition={{ duration: 0.5 }}>
