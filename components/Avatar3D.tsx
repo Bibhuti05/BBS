@@ -71,7 +71,7 @@ function WireframeGun() {
       }
       lines.push(
         <lineSegments key={`barrel-ring-${i}`} geometry={createLineGeometry(points)}>
-          <lineBasicMaterial color="#10b981" transparent opacity={0.8} />
+          <lineBasicMaterial color="#ef4444" transparent opacity={0.8} />
         </lineSegments>
       );
     }
@@ -85,7 +85,7 @@ function WireframeGun() {
       ];
       lines.push(
         <lineSegments key={`barrel-line-${i}`} geometry={createLineGeometry(points)}>
-          <lineBasicMaterial color="#10b981" transparent opacity={0.6} />
+          <lineBasicMaterial color="#ef4444" transparent opacity={0.6} />
         </lineSegments>
       );
     }
@@ -121,7 +121,7 @@ function WireframeGun() {
     
     return (
       <lineSegments geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.7} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.7} />
       </lineSegments>
     );
   };
@@ -143,7 +143,7 @@ function WireframeGun() {
       ];
       lines.push(
         <lineSegments key={`rail-${z}`} geometry={createLineGeometry(points)}>
-          <lineBasicMaterial color="#10b981" transparent opacity={0.6} />
+          <lineBasicMaterial color="#ef4444" transparent opacity={0.6} />
         </lineSegments>
       );
     }
@@ -176,7 +176,7 @@ function WireframeGun() {
     
     lines.push(
       <lineSegments key="receiver" geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.7} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.7} />
       </lineSegments>
     );
     
@@ -205,7 +205,7 @@ function WireframeGun() {
     
     return (
       <lineSegments geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.7} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.7} />
       </lineSegments>
     );
   };
@@ -243,7 +243,7 @@ function WireframeGun() {
     
     return (
       <lineSegments geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.7} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.7} />
       </lineSegments>
     );
   };
@@ -281,7 +281,7 @@ function WireframeGun() {
     
     return (
       <lineSegments geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.7} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.7} />
       </lineSegments>
     );
   };
@@ -308,7 +308,7 @@ function WireframeGun() {
     
     return (
       <lineSegments geometry={createLineGeometry(points)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.8} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.8} />
       </lineSegments>
     );
   };
@@ -334,13 +334,13 @@ function WireframeGun() {
     
     lines.push(
       <lineSegments key="rear-sight" geometry={createLineGeometry(rearPoints)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.9} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.9} />
       </lineSegments>
     );
     
     lines.push(
       <lineSegments key="front-sight" geometry={createLineGeometry(frontPoints)}>
-        <lineBasicMaterial color="#10b981" transparent opacity={0.9} />
+        <lineBasicMaterial color="#ef4444" transparent opacity={0.9} />
       </lineSegments>
     );
     
@@ -383,8 +383,8 @@ function Scene() {
   return (
     <>
       <ambientLight intensity={0.3} />
-      <pointLight position={[5, 5, 5]} intensity={0.5} color="#10b981" />
-      <pointLight position={[-5, -5, 5]} intensity={0.3} color="#10b981" />
+      <pointLight position={[5, 5, 5]} intensity={0.5} color="#ef4444" />
+      <pointLight position={[-5, -5, 5]} intensity={0.3} color="#ef4444" />
       <WireframeGun />
     </>
   );

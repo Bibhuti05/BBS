@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
                   placeholder="John Doe"
-                  whileFocus={{ scale: 1.01, borderColor: "#10b981" }}
+                  whileFocus={{ scale: 1.01, borderColor: "#ef4444" }}
                 />
               </div>
               <div>
@@ -178,7 +178,7 @@ const Contact: React.FC = () => {
                   required
                   className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
                   placeholder="john@example.com"
-                  whileFocus={{ scale: 1.01, borderColor: "#10b981" }}
+                  whileFocus={{ scale: 1.01, borderColor: "#ef4444" }}
                 />
               </div>
               <div>
@@ -194,7 +194,7 @@ const Contact: React.FC = () => {
                   rows={4}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
                   placeholder="Your message..."
-                  whileFocus={{ scale: 1.01, borderColor: "#10b981" }}
+                  whileFocus={{ scale: 1.01, borderColor: "#ef4444" }}
                 />
               </div>
 
