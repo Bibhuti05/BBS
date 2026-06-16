@@ -56,10 +56,10 @@ const Hero: React.FC = () => {
           Hi, I'm
         </motion.p>
         <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight leading-tight" variants={fadeUp} transition={{ duration: 0.6 }}>
-          Bibhuti Bhushan{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-rose-700 dark:from-primary-400 dark:to-rose-600">
-            Saha
-          </span>
+            Bibhuti
+          </span>{" "}
+          Bhushan Saha
         </motion.h1>
 
         <motion.p className="text-xl md:text-2xl font-bold text-zinc-700 dark:text-zinc-300 mb-2 tracking-wide" variants={fadeUp} transition={{ duration: 0.5 }}>
