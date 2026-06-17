@@ -21,6 +21,38 @@ interface Shockwave {
   duration: number;
 }
 
+/* ───── SkillPillCursor ───── */
+interface SkillPillCursorProps {
+  skillName: string;
+  x: number;
+  y: number;
+  isVisible: boolean;
+  clickPulse: boolean;
+}
+
+const SkillPillCursor: React.FC<SkillPillCursorProps> = ({ skillName, x, y, isVisible, clickPulse }) => (
+  <div
+    className="fixed top-0 left-0 pointer-events-none z-[9999] flex items-center justify-center whitespace-nowrap bg-black/40 text-white"
+    style={{
+      height: 40,
+      padding: '0 16px',
+      borderRadius: 9999,
+      transform: `translate(${x}px, ${y - 20}px) translate(-50%, 0) scale(${clickPulse ? 1.15 : 1})`,
+      opacity: isVisible ? 1 : 0,
+      transition: clickPulse
+        ? 'transform 120ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease-out'
+        : 'transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease-out',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      fontSize: 14,
+      fontWeight: 600,
+      letterSpacing: 0.02,
+    }}
+  >
+    {skillName}
+  </div>
+);
+
 /* ───── Component ───── */
 const InvertedCursor: React.FC = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
@@ -28,6 +60,7 @@ const InvertedCursor: React.FC = () => {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [shockwaves, setShockwaves] = useState<Shockwave[]>([]);
   const [clickPulse, setClickPulse] = useState(false);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   const particleIdRef = useRef(0);
   const shockwaveIdRef = useRef(0);
@@ -35,6 +68,15 @@ const InvertedCursor: React.FC = () => {
 
   // Keep ref in sync for event listeners
   useEffect(() => { isVisibleRef.current = isVisible; }, [isVisible]);
+
+  useEffect(() => {
+    const handleSkillHover = (e: Event) => {
+      const detail = (e as CustomEvent).detail as string | null;
+      setHoveredSkill(detail);
+    };
+    window.addEventListener('skillHover', handleSkillHover);
+    return () => window.removeEventListener('skillHover', handleSkillHover);
+  }, []);
 
   /* ── Particle Factory ── */
   const createExplosion = useCallback((cx: number, cy: number) => {
@@ -219,7 +261,7 @@ const InvertedCursor: React.FC = () => {
           width: cursorSize,
           height: cursorSize,
           transform: `translate(${position.x - halfSize}px, ${position.y - halfSize}px) scale(${clickPulse ? 1.4 : 1})`,
-          opacity: isVisible ? 1 : 0,
+          opacity: isVisible && !hoveredSkill ? 1 : 0,
           transition: clickPulse
             ? 'transform 120ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease-out'
             : 'transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease-out',
@@ -228,6 +270,17 @@ const InvertedCursor: React.FC = () => {
           border: '1px solid rgba(255, 255, 255, 0.2)',
         }}
       />
+
+      {/* ── Skill Pill Cursor ── */}
+      {hoveredSkill && (
+        <SkillPillCursor
+          skillName={hoveredSkill}
+          x={position.x}
+          y={position.y}
+          isVisible={isVisible}
+          clickPulse={clickPulse}
+        />
+      )}
 
       {/* ── Keyframe Styles ── */}
       <style>{`

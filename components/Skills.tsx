@@ -357,6 +357,8 @@ const Skills: React.FC = () => {
     };
   }, [isVisible]);
 
+  const prevHoveredRef = useRef<number | null>(null);
+
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const s = stateRef.current;
     if (!s || !containerRef.current) return;
@@ -377,10 +379,20 @@ const Skills: React.FC = () => {
       }
     }
     s.hovered = closest >= 0 ? closest : null;
+
+    if (s.hovered !== prevHoveredRef.current) {
+      prevHoveredRef.current = s.hovered;
+      const skillName = s.hovered !== null ? s.bubbles[s.hovered].name : null;
+      window.dispatchEvent(new CustomEvent('skillHover', { detail: skillName }));
+    }
   }, []);
 
   const handleMouseLeave = useCallback(() => {
     if (stateRef.current) stateRef.current.hovered = null;
+    if (prevHoveredRef.current !== null) {
+      prevHoveredRef.current = null;
+      window.dispatchEvent(new CustomEvent('skillHover', { detail: null }));
+    }
   }, []);
 
   return (
