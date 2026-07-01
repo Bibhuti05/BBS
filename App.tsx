@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Background from './components/Background';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -12,10 +13,26 @@ import MobileNav from './components/MobileNav';
 import InvertedCursor from './components/InvertedCursor';
 import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
+import ScrollToTop from './components/ScrollToTop';
+import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
+
+const Portfolio: React.FC = () => {
+  return (
+    <>
+      <Hero />
+      <Skills />
+      <Experience />
+      <Projects />
+      <Contact />
+    </>
+  );
+};
 
 const App: React.FC = () => {
   return (
     <ToastProvider>
+      <ScrollToTop />
       <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans">
         <Background />
         <ToastContainer />
@@ -25,11 +42,11 @@ const App: React.FC = () => {
         <Header />
         
         <main className="flex-grow">
-          <Hero />
-          <Skills />
-          <Experience />
-          <Projects />
-          <Contact />
+          <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+          </Routes>
         </main>
         
         <Footer />

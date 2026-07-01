@@ -23,6 +23,20 @@ export interface Skill {
   name: string;
 }
 
+export interface BlogPostMeta {
+  title: string;
+  date: string;
+  excerpt: string;
+  tags: string[];
+  coverImage?: string;
+}
+
+export interface BlogPostData {
+  slug: string;
+  meta: BlogPostMeta;
+  Component: React.FC;
+}
+
 export enum Theme {
   LIGHT = 'light',
   DARK = 'dark',

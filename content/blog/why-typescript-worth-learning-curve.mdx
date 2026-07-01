@@ -1,0 +1,58 @@
+export const metadata = {
+  title: "Why TypeScript is Worth the Learning Curve",
+  date: "2026-06-15",
+  excerpt: "TypeScript adds complexity, but the payoff in type safety, developer experience, and long-term maintainability makes it indispensable for serious projects.",
+  tags: ["TypeScript", "JavaScript", "DX"],
+};
+
+Every JavaScript developer has asked themselves: *is TypeScript really worth the extra effort?* The answer depends on your project, but for anything beyond a quick prototype, the answer is almost always **yes**.
+
+## The Initial Hurdle
+
+TypeScript feels slow at first. You're adding types to everything, fighting the compiler, and writing interfaces instead of just hacking code. The learning curve is real — generic types, discriminated unions, and conditional types take time to master.
+
+But here's the thing: that curve flattens fast. Within a week or two, the type system starts *helping* you instead of fighting you.
+
+## What You Actually Gain
+
+### Type Safety at Compile Time
+
+No more `undefined is not a function` errors at runtime. TypeScript catches bugs before they reach users:
+
+```typescript
+interface Project {
+  id: number;
+  title: string;
+  tags: string[];
+}
+
+function getProject(id: number): Project | undefined {
+  return projects.find(p => p.id === id);
+}
+
+const project = getProject(1);
+project.title; // Error: project might be undefined
+if (project) {
+  project.title; // OK, TypeScript knows it exists
+}
+```
+
+### Better IDE Experience
+
+Autocomplete, inline documentation, and refactoring tools actually work properly. Your IDE knows what properties exist on an object, what arguments a function accepts, and what it returns.
+
+### Self-Documenting Code
+
+Types serve as documentation that can't go stale. The interface definition stays in sync with the implementation — no outdated wiki pages.
+
+## When TypeScript Might Not Be Worth It
+
+- **Quick prototypes** — If you're building something disposable, skip the types.
+- **Small scripts** — A 50-line utility doesn't need a type system.
+- **Learning JavaScript** — Master JS fundamentals first, then add TypeScript.
+
+## My Recommendation
+
+Start with **strict mode disabled** (`strict: false` in tsconfig), and gradually tighten the rules as you get comfortable. This avoids the "everything is red" problem that scares beginners away.
+
+For production apps — especially anything with a team of more than one person — TypeScript isn't optional. It's infrastructure.

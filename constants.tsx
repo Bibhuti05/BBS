@@ -16,6 +16,7 @@ export const NAV_LINKS = [
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
   { name: "Portfolio", href: "#portfolio" },
+  { name: "Blog", href: "/blog" },
   { name: "Contact", href: "#contact" },
 ];
 

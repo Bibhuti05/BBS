@@ -1,0 +1,54 @@
+export const metadata = {
+  title: "Building a Portfolio with React and Three.js",
+  date: "2026-07-01",
+  excerpt: "How I built an interactive 3D portfolio website using React, Three.js, Framer Motion, and Tailwind CSS — and the lessons I learned along the way.",
+  tags: ["React", "Three.js", "Framer Motion", "Portfolio"],
+};
+
+Building a portfolio website that stands out is no easy task. You want something that reflects your skills, feels modern, and actually works well on all devices. After iterating through several versions, I landed on a combination of **React**, **Three.js**, **Framer Motion**, and **Tailwind CSS** — and it turned out pretty great.
+
+## Why Three.js?
+
+Most portfolios are flat — scroll, read, scroll, read. Adding 3D elements with [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) changes the dynamic entirely. An animated 3D avatar in the hero section immediately tells visitors: *this developer knows more than just CSS*.
+
+The setup is surprisingly straightforward:
+
+```tsx
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+
+function Avatar3D() {
+  return (
+    <Canvas>
+      <OrbitControls enableZoom={false} />
+      {/* 3D model here */}
+    </Canvas>
+  );
+}
+```
+
+## Framer Motion for Polish
+
+Every section uses `motion` components from Framer Motion — entrance animations, hover effects, and smooth transitions. The glassmorphism-style navigation bar with `backdrop-blur-xl` combined with `whileHover` and `whileTap` animations gives the whole UI a tactile feel.
+
+```tsx
+<motion.a
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="px-5 py-2 rounded-full"
+>
+  {link.name}
+</motion.a>
+```
+
+## Tailwind via CDN — Yes, Really
+
+For a small portfolio, the Tailwind CDN script is perfectly fine. No PostCSS config, no build pipeline — just inline the config in `index.html` and start writing classes. The custom color palette (primary red tones) and animations (`blob`, `fade-in-up`) are defined right there.
+
+## Lessons Learned
+
+1. **Performance matters** — 3D elements can be heavy. Use `Suspense` and lazy loading.
+2. **Mobile first** — The bottom navigation bar with icons works far better than a hamburger menu on small screens.
+3. **Dark mode is essential** — Most developers browse in dark mode. Make it the default or at least easily accessible.
+
+The result is a portfolio that feels alive, not static. And that's the whole point.
