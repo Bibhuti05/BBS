@@ -38,20 +38,6 @@ const Hero: React.FC = () => {
 
         {/* Text Content */}
         <div className="w-full">
-        <motion.div
-          className="inline-flex mb-6 px-4 py-2 rounded-full border border-primary-200/50 dark:border-primary-800/50 bg-primary-50/80 dark:bg-primary-900/30 backdrop-blur-md items-center gap-2.5 w-fit shadow-sm shadow-primary-500/5 hover:border-primary-300 dark:hover:border-primary-700 transition-colors"
-          variants={fadeUp}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500"></span>
-          </div>
-          <span className="text-sm font-medium text-primary-700 dark:text-primary-300">
-            Open to new opportunities
-          </span>
-        </motion.div>
-
         <motion.p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mb-2" variants={fadeUp} transition={{ duration: 0.5 }}>
           Hi, I'm
         </motion.p>
