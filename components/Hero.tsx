@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { SOCIAL_LINKS } from "../constants";
-import Avatar3D from "./Avatar3D";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -27,15 +26,6 @@ const Hero: React.FC = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* 3D Model */}
-        <motion.div 
-          className="w-full max-w-lg" 
-          variants={fadeUp} 
-          transition={{ duration: 0.6 }}
-        >
-          <Avatar3D />
-        </motion.div>
-
         {/* Text Content */}
         <div className="w-full">
         <motion.p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mb-2" variants={fadeUp} transition={{ duration: 0.5 }}>
