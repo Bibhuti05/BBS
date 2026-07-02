@@ -149,6 +149,9 @@
          -webkit-mask: 
            linear-gradient(#fff 0 0) content-box, 
            linear-gradient(#fff 0 0);
+         mask: 
+           linear-gradient(#fff 0 0) content-box, 
+           linear-gradient(#fff 0 0);
          -webkit-mask-composite: xor;
          mask-composite: exclude;
          opacity: 0;
@@ -157,6 +160,96 @@
 
       .card-spotlight:hover .card-spotlight-border {
         opacity: 1;
+      }
+
+      /* ── Radiant button glow ───────────────────────────────────────────── */
+      .btn-radiant {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .btn-radiant::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -20%;
+        transform: translateX(-50%) scaleX(0.5);
+        width: 120%;
+        height: 120%;
+        border-radius: inherit;
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 100%,
+          rgba(255, 255, 255, 0.22) 0%,
+          rgba(239, 68, 68, 0.12) 40%,
+          transparent 75%
+        );
+        opacity: 0;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .btn-radiant:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1);
+      }
+
+      @keyframes radiantPulse {
+        0%   { opacity: 0.55; transform: translateX(-50%) scaleX(1) scaleY(0.9); }
+        50%  { opacity: 0.85; transform: translateX(-50%) scaleX(1.05) scaleY(1.05); }
+        100% { opacity: 0.55; transform: translateX(-50%) scaleX(1) scaleY(0.9); }
+      }
+
+      .btn-radiant:hover::after {
+        animation: radiantPulse 1.8s ease-in-out infinite;
+      }
+
+      /* ── Nav tab radiant glow ──────────────────────────────────────────── */
+      .nav-radiant {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .nav-radiant::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -10%;
+        transform: translateX(-50%) scaleX(0.4);
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background: radial-gradient(
+          ellipse 70% 50% at 50% 100%,
+          rgba(239, 68, 68, 0.28) 0%,
+          rgba(239, 68, 68, 0.08) 55%,
+          transparent 80%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* Hover state — full bloom */
+      .nav-radiant:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(1);
+        animation: navRadiantPulse 2s ease-in-out infinite;
+      }
+
+      /* Active state — always visible, dimmer */
+      .nav-radiant-active::after {
+        opacity: 0.6;
+        transform: translateX(-50%) scaleX(1);
+      }
+
+      @keyframes navRadiantPulse {
+        0%   { opacity: 0.7;  transform: translateX(-50%) scaleX(1)    scaleY(0.9); }
+        50%  { opacity: 1;    transform: translateX(-50%) scaleX(1.08) scaleY(1.08); }
+        100% { opacity: 0.7;  transform: translateX(-50%) scaleX(1)    scaleY(0.9); }
       }
     </style>
     </head>

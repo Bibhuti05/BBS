@@ -40,7 +40,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
+      className={`btn-radiant p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
       aria-label="Toggle Theme"
     >
       {theme === Theme.DARK ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-primary-600" />}

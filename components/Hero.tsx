@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { SOCIAL_LINKS } from "../constants";
+import LowPolyGlobe from "./LowPolyGlobe";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,6 +21,7 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
     >
+      <LowPolyGlobe />
       <motion.div
         className="container mx-auto px-6 z-10 flex flex-col items-center text-center gap-8"
         variants={stagger}
@@ -62,7 +64,7 @@ const Hero: React.FC = () => {
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6" variants={fadeUp} transition={{ duration: 0.5 }}>
           <motion.a
             href="https://drive.google.com/file/d/1L2_U8WJtk6JSefjhCtb5b6RbWzTuvRMn/view?usp=sharing"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
+            className="btn-radiant w-full sm:w-auto px-8 py-3.5 rounded-full bg-primary-600 hover:bg-primary-700 text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -70,7 +72,7 @@ const Hero: React.FC = () => {
           </motion.a>
           <motion.a
             href="#contact"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 font-medium flex items-center justify-center gap-2 hover:border-primary-500 dark:hover:border-primary-500"
+            className="btn-radiant w-full sm:w-auto px-8 py-3.5 rounded-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 font-medium flex items-center justify-center gap-2 hover:border-primary-500 dark:hover:border-primary-500"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -85,7 +87,7 @@ const Hero: React.FC = () => {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
+              className="btn-radiant p-2.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
               aria-label={link.name}
               whileHover={{ scale: 1.2, y: -3 }}
               whileTap={{ scale: 0.9 }}

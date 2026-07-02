@@ -97,6 +97,7 @@ const Header: React.FC = () => {
                     key={link.name}
                     to="/blog"
                     className={`
+                      nav-radiant ${isActive ? 'nav-radiant-active' : ''}
                       relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
                       ${isActive
                         ? 'text-primary-700 dark:text-primary-300 bg-white dark:bg-zinc-800 shadow-sm shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]'
@@ -115,6 +116,7 @@ const Header: React.FC = () => {
                   href={link.href}
                   onClick={(e) => scrollToSection(e, link.href)}
                   className={`
+                    nav-radiant ${isActive ? 'nav-radiant-active' : ''}
                     relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
                     ${isActive
                       ? 'text-primary-700 dark:text-primary-300 bg-white dark:bg-zinc-800 shadow-sm shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]'

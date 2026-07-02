@@ -203,7 +203,7 @@ const Contact: React.FC = () => {
                   key={isSubmitted ? "sent" : isSubmitting ? "sending" : "idle"}
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-primary-500/25 ${
+                  className={`btn-radiant w-full py-4 rounded-xl text-white font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-primary-500/25 ${
                     isSubmitted
                       ? 'bg-green-600 hover:bg-green-700'
                       : 'bg-primary-600 hover:bg-primary-700'
