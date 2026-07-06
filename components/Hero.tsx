@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
 import { SOCIAL_LINKS } from "../constants";
-import LowPolyGlobe from "./LowPolyGlobe";
+import ParticlesBackground from "./ParticlesBackground";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
     >
-      <LowPolyGlobe />
+      <ParticlesBackground />
       <motion.div
         className="container mx-auto px-6 z-10 flex flex-col items-center text-center gap-8"
         variants={stagger}
