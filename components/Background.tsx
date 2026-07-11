@@ -40,13 +40,15 @@ const Background: React.FC = () => {
     const glowCtx = glowCanvas.getContext('2d');
     if (!glowCtx) return;
 
+    let w = 0;
+    let h = 0;
+
     const resize = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const rect = canvas.parentElement!.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
       canvas.width = w * dpr;
       canvas.height = h * dpr;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
       glowCanvas.width = w;
       glowCanvas.height = h;
     };
@@ -63,9 +65,6 @@ const Background: React.FC = () => {
     document.addEventListener('mouseleave', onMouseLeave);
 
     const render = () => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-
       ctx.save();
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
@@ -112,7 +111,7 @@ const Background: React.FC = () => {
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-light-bg dark:bg-dark-bg transition-colors duration-500">
-      <canvas ref={canvasRef} className="absolute inset-0" />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       <div className="absolute inset-0 bg-gradient-to-br from-primary-500/[0.04] via-transparent to-primary-500/[0.03] dark:from-primary-500/[0.06] dark:via-transparent dark:to-primary-400/[0.04]" />
     </div>
   );
