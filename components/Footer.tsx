@@ -11,32 +11,24 @@ const socialLinks = [
 const Footer: React.FC = () => {
   return (
     <motion.footer
-      className="relative bg-white dark:bg-zinc-900 border-t border-zinc-100 dark:border-zinc-800 py-12 overflow-hidden"
+      className="relative border-t border-zinc-100 dark:border-zinc-800 py-12 overflow-hidden backdrop-blur-sm"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
     >
-      {/* Gemini-like Edge Glow Effect */}
-      <div className="absolute bottom-0 inset-x-0 h-24 pointer-events-none">
-        <div className="absolute bottom-[-20px] w-full h-full opacity-60 dark:opacity-40 blur-[50px] saturate-150">
-          <motion.div 
-            className="absolute top-0 left-[-10%] w-[40%] h-full bg-primary-400 rounded-full"
-            animate={{ x: ["0%", "250%", "0%"] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div 
-            className="absolute top-0 left-[30%] w-[40%] h-full bg-primary-500 rounded-full"
-            animate={{ x: ["0%", "-150%", "0%"] }}
-            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div 
-            className="absolute top-0 left-[70%] w-[40%] h-full bg-primary-300 rounded-full"
-            animate={{ x: ["0%", "-200%", "0%"] }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          />
-        </div>
-      </div>
+      {/* Radial gradient from bottom */}
+      <motion.div
+        className="absolute bottom-0 inset-x-0 h-64 pointer-events-none"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(239,68,68,0.12) 0%, rgba(239,68,68,0.05) 40%, transparent 70%)",
+        }}
+      />
 
       <div className="relative z-10 container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
         <motion.div
