@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import { Contrast } from 'lucide-react';
 import { Theme } from '../types';
 
 interface ThemeToggleProps {
@@ -8,9 +8,9 @@ interface ThemeToggleProps {
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   const [theme, setTheme] = useState<Theme>(Theme.DARK);
+  const [rotation, setRotation] = useState(0);
 
   useEffect(() => {
-    // Initialize theme from local storage or system preference
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -34,16 +34,21 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   }, [theme]);
 
   const toggleTheme = () => {
+    setRotation((prev) => prev + 180);
     setTheme((prev) => (prev === Theme.DARK ? Theme.LIGHT : Theme.DARK));
   };
 
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 ${className}`}
+      className={`p-2 rounded-full transition-all duration-300 hover:shadow-[0_0_12px_rgba(239,68,68,0.4)] ${className}`}
       aria-label="Toggle Theme"
     >
-      {theme === Theme.DARK ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-primary-600" />}
+      <Contrast
+        size={20}
+        className={theme === Theme.DARK ? 'text-white' : 'text-black'}
+        style={{ transform: `rotate(${rotation}deg)`, transition: 'transform 0.5s ease-in-out' }}
+      />
     </button>
   );
 };
