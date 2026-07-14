@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, PenLine } from 'lucide-react';
+import { ArrowLeft, BookOpen } from 'lucide-react';
 import { getAllPosts } from '../blog-loader';
 import BlogCard from './BlogCard';
 
@@ -33,7 +33,7 @@ const Blog: React.FC = () => {
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
-              <PenLine size={28} className="text-primary-600 dark:text-primary-400" />
+              <BookOpen size={28} className="text-primary-600 dark:text-primary-400" />
               <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">
                 Blog
               </h1>
