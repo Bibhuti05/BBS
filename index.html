@@ -169,6 +169,20 @@
         opacity: 1;
       }
 
+      .animated-gradient {
+        background: radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.8), transparent 60%);
+        background-size: 200% 200%;
+        animation: gradientOrbit 12s ease-in-out infinite;
+      }
+
+      @keyframes gradientOrbit {
+        0%   { background-position: 0% 50%; }
+        25%  { background-position: 100% 0%; }
+        50%  { background-position: 100% 100%; }
+        75%  { background-position: 0% 100%; }
+        100% { background-position: 0% 50%; }
+      }
+
       .click-shockwave {
         position: fixed;
         pointer-events: none;
@@ -223,7 +237,7 @@
       }
     </style>
     </head>
-  <body>
+  <body class="overflow-x-hidden">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
