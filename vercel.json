@@ -1,7 +1,12 @@
 {
   "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/blog/:slug", "destination": "/index.html" },
+    { "source": "/blog/:slug", "destination": "/api/blog-meta" },
     { "source": "/blog", "destination": "/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/blog-meta.js": {
+      "includeFiles": "dist/**"
+    }
+  }
 }
