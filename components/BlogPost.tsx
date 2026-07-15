@@ -37,9 +37,23 @@ const BlogPost: React.FC = () => {
       <Helmet>
         <title>{post.meta.title} — Bibhuti Bhushan Saha</title>
         <meta name="description" content={post.meta.excerpt} />
+
         <meta property="og:title" content={post.meta.title} />
         <meta property="og:description" content={post.meta.excerpt} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://bbs-kappa.vercel.app/blog/${slug}`} />
+        <meta property="og:image" content={post.meta.coverImage || "https://bbs-kappa.vercel.app/assets/portfolio.png"} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="article:published_time" content={post.meta.date} />
+        {post.meta.tags.map(tag => (
+          <meta property="article:tag" content={tag} key={tag} />
+        ))}
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.meta.title} />
+        <meta name="twitter:description" content={post.meta.excerpt} />
+        <meta name="twitter:image" content={post.meta.coverImage || "https://bbs-kappa.vercel.app/assets/portfolio.png"} />
       </Helmet>
 
       <section className="min-h-screen pt-32 pb-20 px-6">
@@ -58,15 +72,11 @@ const BlogPost: React.FC = () => {
           </Link>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
+        <div>
           <MDXLayout meta={post.meta}>
             <post.Component />
           </MDXLayout>
-        </motion.div>
+        </div>
       </section>
     </>
   );

@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       plugins: [
-        { enforce: 'pre', ...mdx({ jsxImportSource: 'react', remarkPlugins: [remarkGfm] }) },
+        { enforce: 'pre', ...mdx({ jsxImportSource: 'react', providerImportSource: '@mdx-js/react', remarkPlugins: [remarkGfm] }) },
         react({ include: /\.(jsx|js|mdx|tsx|ts)$/ }),
       ],
       define: {
