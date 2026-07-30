@@ -71,7 +71,7 @@ const Header: React.FC = () => {
     }
   };
 
-  const glassPillStyles = "bg-white/40 dark:bg-zinc-900/40 backdrop-blur border border-white/20 dark:border-zinc-700/20 shadow-xl shadow-black/10 dark:shadow-black/50";
+  const glassPillStyles = "bg-white/70 dark:bg-[#1e1e1c]/70 backdrop-blur border border-white/30 dark:border-[#2e2e2c]/30";
 
   const visibleLinks = NAV_LINKS.filter((l) => l.name !== 'Blog' && l.name !== 'Contact');
 
@@ -83,7 +83,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.6, delay: 0.1 }}
     >
       <div
-        className="absolute inset-0 h-[140px] backdrop-blur shadow-black/5"
+        className="absolute inset-0 h-[140px] backdrop-blur-md bg-white/10 dark:bg-black/10"
         style={{
           maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
           WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)',
@@ -104,7 +104,7 @@ const Header: React.FC = () => {
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full ${glassPillStyles}`}
             >
               <span className="text-lg font-bold text-zinc-900 dark:text-white tracking-tight">
-                BBS<span className="text-primary-600 dark:text-primary-400">Portfolio</span>
+                BBS<span className="text-zinc-500 dark:text-zinc-400">Portfolio</span>
               </span>
             </Link>
           </motion.div>
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
                     className={`
                       relative px-5 py-2 rounded-full text-sm font-medium transition-all duration-300
                       ${isActive
-                        ? 'text-primary-700 dark:text-primary-300 bg-white dark:bg-zinc-800 shadow-sm shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]'
+                        ? 'text-zinc-900 dark:text-zinc-100 bg-white dark:bg-[#292524] shadow-sm shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]'
                         : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50'
                       }
                     `}
@@ -144,21 +144,20 @@ const Header: React.FC = () => {
                   ref={moreBtnRef}
                   onClick={() => setMoreOpen((prev) => !prev)}
                   className={`
-                    flex items-center gap-1 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
+                    flex items-center justify-center px-4 py-2 rounded-full text-sm font-medium transition-all duration-300
                     ${moreOpen
-                      ? 'text-primary-700 dark:text-primary-300 bg-white dark:bg-zinc-800 shadow-sm'
+                      ? 'text-zinc-900 dark:text-zinc-100 bg-white dark:bg-[#292524] shadow-sm'
                       : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50'
                     }
                   `}
                 >
-                  More
                   <MoreHorizontal size={16} />
                 </button>
 
                 {moreOpen && (
                   <div
                     ref={morePanelRef}
-                    className="absolute right-0 top-full mt-2 min-w-[160px] py-2 bg-white/80 dark:bg-zinc-800/80 backdrop-blur border border-white/20 dark:border-zinc-700/20 rounded-2xl shadow-xl shadow-black/10 dark:shadow-black/50 animate-more-expand-down origin-top"
+                    className="absolute right-0 top-full mt-2 min-w-[160px] py-2 bg-white/80 dark:bg-[#1e1e1c]/80 backdrop-blur-md border border-white/30 dark:border-[#2e2e2c]/30 rounded-2xl animate-more-expand-down origin-top"
                   >
                     {MORE_LINKS.map((item) => {
                       const isActive = item.isRoute
@@ -173,7 +172,7 @@ const Header: React.FC = () => {
                             onClick={() => setMoreOpen(false)}
                             className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
                               isActive
-                                ? 'text-primary-600 dark:text-primary-400 bg-primary-600/5'
+                                ? 'text-zinc-800 dark:text-zinc-200 bg-zinc-600/5'
                                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50'
                             }`}
                           >

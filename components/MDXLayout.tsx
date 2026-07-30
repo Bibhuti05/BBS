@@ -15,14 +15,14 @@ const mdxComponents = {
   ul: (props: any) => <ul className={mergeClasses("list-disc list-inside text-zinc-700 dark:text-zinc-300 mb-4 space-y-1", props.className)}>{props.children}</ul>,
   ol: (props: any) => <ol className={mergeClasses("list-decimal list-inside text-zinc-700 dark:text-zinc-300 mb-4 space-y-1", props.className)}>{props.children}</ol>,
   li: (props: any) => <li className={mergeClasses("text-zinc-700 dark:text-zinc-300 leading-relaxed", props.className)}>{props.children}</li>,
-  a: (props: any) => <a className={mergeClasses("text-primary-600 dark:text-primary-400 hover:underline underline-offset-2", props.className)} {...props} />,
-  blockquote: (props: any) => <blockquote className={mergeClasses("border-l-4 border-primary-500 pl-4 italic text-zinc-600 dark:text-zinc-400 my-4", props.className)}>{props.children}</blockquote>,
+  a: (props: any) => <a className={mergeClasses("text-zinc-700 dark:text-zinc-300 hover:underline underline-offset-2", props.className)} {...props} />,
+  blockquote: (props: any) => <blockquote className={mergeClasses("border-l-4 border-zinc-400 dark:border-zinc-500 pl-4 italic text-zinc-600 dark:text-zinc-400 my-4", props.className)}>{props.children}</blockquote>,
   code: (props: any) => {
     const isInline = !props.className;
-    if (isInline) return <code className="bg-zinc-100 dark:bg-zinc-800 text-primary-600 dark:text-primary-400 px-1.5 py-0.5 rounded text-sm font-mono" {...props} />;
+    if (isInline) return <code className="bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 px-1.5 py-0.5 rounded text-sm font-mono" {...props} />;
     return <code className="text-sm font-mono">{props.children}</code>;
   },
-  pre: (props: any) => <pre className="w-full max-w-full min-w-0 bg-zinc-900 dark:bg-black rounded-xl p-5 overflow-x-auto my-6 border border-zinc-700 text-sm font-mono text-zinc-200 shadow-lg">{props.children}</pre>,
+  pre: (props: any) => <pre className="w-full max-w-full min-w-0 bg-zinc-900 dark:bg-[#0c0a09] rounded-xl p-5 overflow-x-auto my-6 text-sm font-mono text-zinc-200">{props.children}</pre>,
   strong: (props: any) => <strong className="font-bold text-zinc-900 dark:text-zinc-100" {...props} />,
   em: (props: any) => <em className="italic text-zinc-600 dark:text-zinc-400" {...props} />,
   table: (props: any) => <table className="w-full border-collapse my-4" {...props} />,

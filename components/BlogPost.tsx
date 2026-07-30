@@ -22,7 +22,7 @@ const BlogPost: React.FC = () => {
           </p>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-primary-600 dark:text-primary-400 hover:underline"
+            className="inline-flex items-center gap-2 text-zinc-700 dark:text-zinc-300 hover:underline"
           >
             <ArrowLeft size={16} />
             Back to blog
@@ -65,7 +65,7 @@ const BlogPost: React.FC = () => {
         >
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
           >
             <ArrowLeft size={16} />
             Back to blog

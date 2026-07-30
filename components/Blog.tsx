@@ -26,14 +26,14 @@ const Blog: React.FC = () => {
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors mb-8"
             >
               <ArrowLeft size={16} />
               Back to portfolio
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
-              <BookOpen size={28} className="text-primary-600 dark:text-primary-400" />
+              <BookOpen size={28} className="text-zinc-700 dark:text-zinc-300" />
               <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">
                 Blog
               </h1>
