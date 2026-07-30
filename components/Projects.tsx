@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROJECTS } from '../constants';
+import { ArrowUpRight, Github } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,9 +47,31 @@ const Projects: React.FC = () => {
             >
               {/* Info - hidden by default, shown on hover */}
               <div className="project-card-info absolute inset-0 z-10 p-8 flex flex-col justify-start">
-                <h3 className="text-2xl font-bold text-white mb-2">
-                  {project.title}
-                </h3>
+                <div className="flex items-start justify-between mb-2">
+                  <h3 className="text-2xl font-bold text-white">
+                    {project.title}
+                  </h3>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github size={18} />
+                    </a>
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <ArrowUpRight size={18} />
+                    </a>
+                  </div>
+                </div>
                 <p className="text-xs uppercase tracking-widest text-[#78716c] mb-4">
                   {project.tags[0]} · {project.tags.slice(1, 3).join(' ')}
                 </p>
