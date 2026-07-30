@@ -92,9 +92,11 @@ const ExperienceDetails: React.FC<ExperienceDetailsProps> = ({ experience, initi
         <div 
           className={`
             fixed bottom-0 left-0 right-0 z-[70] bg-white dark:bg-[#1e1e1c] 
-            rounded-t-[2rem] overflow-hidden flex flex-col
-            transition-transform duration-500 ease-out h-[75vh] will-change-transform
-            ${isAnimating && !isClosing ? 'translate-y-0' : 'translate-y-full'}
+            rounded-t-[2rem] overflow-hidden flex flex-col h-[75vh]
+            transition-all duration-500 ease-out
+            ${isAnimating && !isClosing 
+              ? 'translate-y-0 opacity-100' 
+              : 'translate-y-full opacity-0'}
           `}
           onClick={(e) => e.stopPropagation()}
         >
