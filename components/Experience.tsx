@@ -72,7 +72,7 @@ const Experience: React.FC = () => {
           }}
         >
           <motion.h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4" variants={fadeUp}>
-            Work <span className="text-primary-600 dark:text-primary-400">Experience</span>
+            Work <span className="text-zinc-700 dark:text-zinc-300">Experience</span>
           </motion.h2>
           <motion.p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto" variants={fadeUp}>
             My professional journey and the value I've delivered to companies and clients.
@@ -81,7 +81,7 @@ const Experience: React.FC = () => {
 
         <div ref={containerRef} className="relative max-w-4xl mx-auto">
           <motion.div
-            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-zinc-800"
+            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-[#292524]"
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true, margin: "-100px" }}
@@ -91,11 +91,11 @@ const Experience: React.FC = () => {
           
           <div
             ref={dotRef}
-            className="absolute left-0 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-primary-500 rounded-full z-0 transition-opacity duration-300"
+            className="absolute left-0 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-500 rounded-full z-0 transition-opacity duration-300"
             style={{
               top: '0%',
               opacity: 0,
-              boxShadow: '0 0 15px 5px rgba(239, 68, 68, 0.6), 0 0 30px 10px rgba(239, 68, 68, 0.3)'
+              boxShadow: '0 0 15px 5px rgba(120, 113, 108, 0.5), 0 0 30px 10px rgba(120, 113, 108, 0.2)'
             }}
           />
 

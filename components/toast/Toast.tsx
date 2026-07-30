@@ -40,11 +40,10 @@ const Toast: React.FC<ToastProps> = ({ toast }) => {
       className={`
         flex items-center gap-3 p-4 
         w-80 sm:w-96
-        bg-white/70 dark:bg-zinc-900/70 
+        bg-white/80 dark:bg-[#1e1e1c]/80 
         backdrop-blur-md 
         border ${borderColors[toast.type]} 
-        shadow-lg shadow-black/5 dark:shadow-black/20 
-        rounded-2xl
+        rounded-xl
         pointer-events-auto
       `}
     >

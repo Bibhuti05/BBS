@@ -33,12 +33,12 @@ const App: React.FC = () => {
   return (
     <ToastProvider>
       <ScrollToTop />
-      <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans">
+      <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans overflow-x-hidden">
         <Background />
         <ToastContainer />
         <ClickShockwave />
 
-      <div className="relative z-0 flex flex-col">
+      <div className="relative z-0 flex flex-col overflow-x-hidden">
         <Header />
         
         <main className="flex-grow">

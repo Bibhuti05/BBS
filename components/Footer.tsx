@@ -12,8 +12,8 @@ const Footer: React.FC = () => {
   return (
     <motion.footer
       className="relative border-t border-zinc-100 dark:border-zinc-800 py-12 overflow-hidden backdrop-blur-sm"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
     >
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
         style={{
           background:
-            "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(239,68,68,0.12) 0%, rgba(239,68,68,0.05) 40%, transparent 70%)",
+            "radial-gradient(ellipse 80% 100% at 50% 100%, rgba(120,113,108,0.12) 0%, rgba(120,113,108,0.05) 40%, transparent 70%)",
         }}
       />
 
@@ -54,7 +54,7 @@ const Footer: React.FC = () => {
             <motion.a
               key={link.href}
               href={link.href}
-              className="text-zinc-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              className="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
               whileHover={{ scale: 1.3, y: -3 }}
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, y: 10 }}

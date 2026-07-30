@@ -41,7 +41,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
   return (
     <button
       onClick={toggleTheme}
-      className={`p-2 rounded-full transition-all duration-300 hover:shadow-[0_0_12px_rgba(239,68,68,0.4)] ${className}`}
+      className={`p-2 rounded-full transition-all duration-300 hover:shadow-[0_0_12px_rgba(120,113,108,0.4)] ${className}`}
       aria-label="Toggle Theme"
     >
       <Contrast

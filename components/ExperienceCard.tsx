@@ -25,13 +25,7 @@ const ExperienceCard = forwardRef<HTMLDivElement, ExperienceCardProps>(
       >
         <div 
           onClick={onClick}
-          className={`
-            relative overflow-hidden
-            bg-white dark:bg-zinc-800 rounded-2xl shadow-sm hover:shadow-md 
-            border border-zinc-100 dark:border-zinc-700 group cursor-pointer 
-            transition-all duration-300 hover:scale-[1.02]
-            ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}
-          `}
+          className={`relative overflow-hidden bg-zinc-100 dark:bg-[#1e1e1c] rounded-3xl border border-zinc-200 dark:border-[#2e2e2c] group cursor-pointer transition-all duration-300 hover:scale-[1.02] ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
         >
           {/* Background Image Container */}
           {experience.logo && (
@@ -51,11 +45,11 @@ const ExperienceCard = forwardRef<HTMLDivElement, ExperienceCardProps>(
 
           {/* Content Wrapper */}
           <div className="relative z-10 p-6">
-            <div className={`inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full text-xs font-medium bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+            <div className={`inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800/50 text-zinc-700 dark:text-zinc-300 ${isEven ? 'md:flex-row-reverse' : ''}`}>
               <Briefcase size={14} />
               {experience.period}
             </div>
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1 group-hover:text-primary-500 transition-colors">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-1 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
               {experience.role}
             </h3>
             <h4 className="text-lg font-medium text-zinc-700 dark:text-zinc-300 mb-3">
@@ -65,7 +59,7 @@ const ExperienceCard = forwardRef<HTMLDivElement, ExperienceCardProps>(
               {experience.description}
             </p>
             <div className={`mt-4 flex ${isEven ? 'md:justify-end' : 'justify-start'}`}>
-               <span className="text-xs font-semibold text-primary-600 dark:text-primary-400 uppercase tracking-wide border-b border-transparent group-hover:border-primary-500 transition-colors">
+               <span className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 uppercase tracking-wide border-b border-transparent group-hover:border-zinc-400 transition-colors">
                   View Details
                </span>
             </div>

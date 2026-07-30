@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ slug, meta, index }) => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
-            <h2 className="text-xl font-bold text-white group-hover:text-primary-300 transition-colors duration-200 mb-2">
+            <h2 className="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors duration-200 mb-2">
               {meta.title}
             </h2>
             <p className="text-zinc-300 text-sm leading-relaxed mb-3 line-clamp-2">
@@ -65,11 +65,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ slug, meta, index }) => {
     >
       <Link
         to={`/blog/${slug}`}
-        className="group block card-spotlight rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800/50 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300 overflow-hidden"
+        className="group block card-spotlight rounded-3xl bg-zinc-100 dark:bg-[#1e1e1c] border border-zinc-200 dark:border-[#2e2e2c] hover:bg-zinc-50 dark:hover:bg-[#252523] transition-all duration-300 overflow-hidden"
       >
         <div className="card-spotlight-border rounded-2xl" />
         <div className="relative z-10 p-6">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-200 mb-3">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors duration-200 mb-3">
             {meta.title}
           </h2>
 
