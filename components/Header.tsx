@@ -109,6 +109,10 @@ const Header: React.FC = () => {
             );
           })}
         </nav>
+        {/* place holder for the get in touch button */}
+        <div className="hidden sm:inline-flex items-center px-4 py-2">
+
+        </div>
 
         {/* Right side - Absolute positioned CTA button */}
         <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center">
