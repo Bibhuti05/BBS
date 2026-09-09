@@ -14,15 +14,15 @@ const BlogPost: React.FC = () => {
     return (
       <section className="min-h-screen pt-32 pb-20 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
+          <h1 className="text-2xl font-bold text-zinc-900 mb-4">
             Post not found
           </h1>
-          <p className="text-zinc-600 dark:text-zinc-400 mb-8">
+          <p className="text-zinc-600 mb-8">
             The blog post you're looking for doesn't exist.
           </p>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-zinc-700 dark:text-zinc-300 hover:underline"
+            className="inline-flex items-center gap-2 text-zinc-700 hover:underline"
           >
             <ArrowLeft size={16} />
             Back to blog
@@ -65,7 +65,7 @@ const BlogPost: React.FC = () => {
         >
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900:text-zinc-100 transition-colors"
           >
             <ArrowLeft size={16} />
             Back to blog

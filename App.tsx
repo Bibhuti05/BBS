@@ -33,15 +33,15 @@ const App: React.FC = () => {
   return (
     <ToastProvider>
       <ScrollToTop />
-      <div className="min-h-screen text-zinc-800 dark:text-zinc-200 transition-colors duration-500 font-sans overflow-x-hidden">
+      <div className="min-h-screen font-sans overflow-x-hidden">
         <Background />
         <ToastContainer />
         <ClickShockwave />
 
-      <div className="relative z-0 flex flex-col overflow-x-hidden">
+      <div className="relative z-0 flex flex-col">
         <Header />
         
-        <main className="flex-grow">
+        <main className="flex-grow no-scrollbar">
           <Routes>
             <Route path="/" element={<Portfolio />} />
             <Route path="/blog" element={<Blog />} />

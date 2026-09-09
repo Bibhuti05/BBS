@@ -65,19 +65,19 @@ const BlogCard: React.FC<BlogCardProps> = ({ slug, meta, index }) => {
     >
       <Link
         to={`/blog/${slug}`}
-        className="group block card-spotlight rounded-3xl bg-zinc-100 dark:bg-[#1e1e1c] border border-zinc-200 dark:border-[#2e2e2c] hover:bg-zinc-50 dark:hover:bg-[#252523] transition-all duration-300 overflow-hidden"
+        className="group block card-spotlight rounded-3xl bg-zinc-100 border border-zinc-200 hover:bg-zinc-50:bg-[#252523] transition-all duration-300 overflow-hidden"
       >
         <div className="card-spotlight-border rounded-2xl" />
         <div className="relative z-10 p-6">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors duration-200 mb-3">
+          <h2 className="text-xl font-bold text-zinc-900 group-hover:text-zinc-900:text-zinc-100 transition-colors duration-200 mb-3">
             {meta.title}
           </h2>
 
-          <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed mb-4">
+          <p className="text-zinc-600 text-sm leading-relaxed mb-4">
             {meta.excerpt}
           </p>
 
-          <div className="flex items-center gap-4 text-xs text-zinc-500 dark:text-zinc-500">
+          <div className="flex items-center gap-4 text-xs text-zinc-500">
             <span className="flex items-center gap-1.5">
               <Calendar size={14} />
               {new Date(meta.date).toLocaleDateString('en-US', {

@@ -1,140 +1,154 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { EXPERIENCES } from '../constants';
-import ExperienceCard from './ExperienceCard';
-import ExperienceDetails from './ExperienceDetails';
+import { ArrowUpRight } from 'lucide-react';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0 },
 };
 
 const Experience: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const dotRef = useRef<HTMLDivElement>(null);
-  
-  const [selectedId, setSelectedId] = useState<number | null>(null);
-  const [rects, setRects] = useState<Map<number, DOMRect>>(new Map());
-  const cardRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current || !dotRef.current) return;
-      
-      const rect = containerRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const height = rect.height;
-      
-      const relativeY = (windowHeight / 2) - rect.top;
-      let progress = relativeY / height;
-      const clampedProgress = Math.min(Math.max(progress, 0), 1);
-      
-      dotRef.current.style.top = `${clampedProgress * 100}%`;
-      
-      if (progress >= 0 && progress <= 1) {
-        dotRef.current.style.opacity = '1';
-      } else {
-        dotRef.current.style.opacity = '0';
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const handleCardClick = (id: number) => {
-    const cardElement = cardRefs.current.get(id);
-    if (cardElement) {
-      const rect = cardElement.getBoundingClientRect();
-      setRects(prev => new Map(prev).set(id, rect));
-      setSelectedId(id);
-    }
-  };
-
-  const handleClose = () => {
-    setSelectedId(null);
-  };
-
-  const selectedExperience = EXPERIENCES.find(e => e.id === selectedId);
-  const selectedRect = selectedId ? rects.get(selectedId) || null : null;
-
   return (
-    <section id="experience" className="py-20 relative">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="bg-[#eae8e3] py-20 md:py-28">
+      <div className="container mx-auto px-6 max-w-6xl">
+
+        {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="mb-14"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
+          viewport={{ once: true, margin: '-80px' }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
         >
-          <motion.h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4" variants={fadeUp}>
-            Work <span className="text-zinc-700 dark:text-zinc-300">Experience</span>
-          </motion.h2>
-          <motion.p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto" variants={fadeUp}>
-            My professional journey and the value I've delivered to companies and clients.
+          <motion.p
+            className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-3"
+            variants={fadeUp}
+          >
+            about
           </motion.p>
+          <motion.h2
+            className="text-4xl md:text-6xl font-extrabold tracking-tight text-zinc-900 mb-4"
+            variants={fadeUp}
+          >
+            I work on the parts
+            <br />
+            that matter most.
+          </motion.h2>
         </motion.div>
 
-        <div ref={containerRef} className="relative max-w-4xl mx-auto">
+        {/* Bio + principles */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 pb-16 border-b border-black/10">
           <motion.div
-            className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-zinc-200 dark:bg-[#292524]"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            style={{ originY: 0 }}
-            transition={{ duration: 1.5, ease: "easeOut" }}
-          />
-          
-          <div
-            ref={dotRef}
-            className="absolute left-0 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-500 rounded-full z-0 transition-opacity duration-300"
-            style={{
-              top: '0%',
-              opacity: 0,
-              boxShadow: '0 0 15px 5px rgba(120, 113, 108, 0.5), 0 0 30px 10px rgba(120, 113, 108, 0.2)'
-            }}
-          />
+            className="space-y-5 text-zinc-600 text-base leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p>
+              Frontend-focused engineer who cares about performance and user experience.
+              I build modern web apps with React and Next.js, and I understand the backend
+              well enough to integrate it cleanly.
+            </p>
+            <p>
+              I got here by shipping things that broke and working out why.
+              That's also how I ended up doing code reviews and mentoring teammates —
+              the moment a bug stops being scary for someone is a good moment.
+            </p>
+            <p>
+              These days I split my time between product work at startups and
+              a handful of personal projects I run myself — the best way to
+              keep learning things I wouldn't otherwise pick up.
+            </p>
+          </motion.div>
 
+          <motion.div
+            className="space-y-0 divide-y divide-black/8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            {[
+              'I write frontend first and interfaces second, and I think it shows in the code.',
+              'I default to clean, composable architecture. React and TypeScript solve more than they get credit for.',
+              'Most of what I know about production came from breaking it and having to fix it fast.',
+              'I review code carefully because explaining something is how I find out if I actually understand it.',
+            ].map((point, i) => (
+              <div key={i} className="flex gap-5 py-5">
+                <span className="text-xs font-mono text-zinc-400 mt-1 shrink-0 w-6">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <p className="text-sm text-zinc-600 leading-relaxed">{point}</p>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Experience list */}
+        <motion.p
+          className="text-xs font-mono text-zinc-400 uppercase tracking-widest mb-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+        >
+          work experience
+        </motion.p>
+
+        <div className="space-y-0 divide-y divide-black/8">
           {EXPERIENCES.map((exp, index) => (
             <motion.div
               key={exp.id}
-              className={`relative flex flex-col md:flex-row items-center mb-12 ${
-                index % 2 === 0 ? 'md:flex-row-reverse' : ''
-              }`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group py-7 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
             >
+              {/* Number + period */}
+              <div className="flex sm:flex-col items-center sm:items-start gap-4 sm:gap-1 shrink-0 w-full sm:w-28">
+                <span className="text-xs font-mono text-zinc-400">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="text-xs text-zinc-400">{exp.period}</span>
+              </div>
 
-              <div className="w-full md:w-1/2"></div>
-
-              <ExperienceCard
-                experience={exp}
-                index={index}
-                isActive={selectedId === exp.id}
-                onClick={() => handleCardClick(exp.id)}
-                ref={(el) => {
-                  if (el) cardRefs.current.set(exp.id, el);
-                  else cardRefs.current.delete(exp.id);
-                }}
-              />
+              {/* Company + role */}
+              <div className="flex-1">
+                <div className="flex items-start justify-between gap-4 mb-2">
+                  <div>
+                    <h3 className="text-xl font-bold text-zinc-900 mb-0.5">{exp.company}</h3>
+                    <p className="text-sm text-zinc-500">{exp.role}</p>
+                  </div>
+                  <a
+                    href={exp.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 opacity-0 group-hover:opacity-100 transition-opacity p-1 rounded-full hover:bg-black/5"
+                  >
+                    <ArrowUpRight size={16} className="text-zinc-400" />
+                  </a>
+                </div>
+                <p className="text-sm text-zinc-500 leading-relaxed max-w-xl">
+                  {exp.description}
+                </p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {exp.responsibilities.slice(0, 2).map((r, i) => (
+                    <span
+                      key={i}
+                      className="text-xs px-2.5 py-1 rounded-full bg-black/6 text-zinc-500"
+                    >
+                      {r.split(' ').slice(0, 5).join(' ')}…
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {selectedExperience && (
-        <ExperienceDetails
-          experience={selectedExperience}
-          initialRect={selectedRect}
-          onClose={handleClose}
-        />
-      )}
+      </div>
     </section>
   );
 };

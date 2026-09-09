@@ -3,99 +3,115 @@ import { motion } from 'framer-motion';
 import { PROJECTS } from '../constants';
 import { ArrowUpRight, Github } from 'lucide-react';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
 const Projects: React.FC = () => {
   return (
-    <section id="portfolio" className="py-24">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="bg-[#0e0e0e] text-white py-20 md:py-28">
+      <div className="container mx-auto px-6 max-w-6xl">
+
+        {/* Header */}
         <motion.div
-          className="mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
+          className="mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white mb-6 tracking-tight"
-            variants={fadeUp}
-          >
-            Featured <span className="text-zinc-400 dark:text-[#78716c]">Projects</span>
-          </motion.h2>
-          <motion.p
-            className="text-lg text-zinc-500 dark:text-[#C2BDB2] max-w-xl"
-            variants={fadeUp}
-          >
-            A selection of projects that showcase my passion for building high-quality software.
-          </motion.p>
+          <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mb-3">
+            projects
+          </p>
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
+            Things I've built.
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Project list */}
+        <div className="space-y-0 ">
           {PROJECTS.map((project, index) => (
             <motion.div
               key={project.id}
-              className="project-card aspect-[4/5] rounded-3xl bg-[#1e1e1c] relative"
-              initial={{ opacity: 0, y: 40 }}
+              className="group py-8 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8"
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {/* Info - hidden by default, shown on hover */}
-              <div className="project-card-info absolute inset-0 z-10 p-8 flex flex-col justify-start">
-                <div className="flex items-start justify-between mb-2">
-                  <h3 className="text-2xl font-bold text-white">
-                    {project.title}
-                  </h3>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Github size={18} />
-                    </a>
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <ArrowUpRight size={18} />
-                    </a>
-                  </div>
-                </div>
-                <p className="text-xs uppercase tracking-widest text-[#78716c] mb-4">
-                  {project.tags[0]} · {project.tags.slice(1, 3).join(' ')}
-                </p>
-                <p className="text-sm text-[#C2BDB2] leading-relaxed line-clamp-3">
-                  {project.description}
-                </p>
+              {/* Number + year */}
+              <div className="flex sm:flex-col items-center sm:items-start gap-4 sm:gap-1 shrink-0 w-full sm:w-20">
+                <span className="text-xs font-mono text-zinc-600">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
               </div>
 
-              {/* Image - full bleed initially, shrinks on hover */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 block"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="project-card-image w-full h-full object-cover"
-                />
-              </a>
+              {/* Content */}
+              <div className="flex-1">
+                <div className="flex items-start justify-between gap-6 mb-3">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/title"
+                  >
+                    <h3 className="text-2xl md:text-3xl font-bold text-white group-hover/title:text-zinc-300 transition-colors duration-200 inline-flex items-center gap-2">
+                      {project.title}
+                      <ArrowUpRight
+                        size={20}
+                        className="opacity-0 group-hover/title:opacity-100 transition-opacity -translate-y-0.5"
+                      />
+                    </h3>
+                  </a>
+
+                  {/* Tags — right side on desktop */}
+                  <div className="hidden sm:flex items-center gap-2 flex-wrap justify-end shrink-0">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-xs px-3 py-1 rounded-full border border-white/10 text-zinc-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl mb-4">
+                  {project.description}
+                </p>
+
+                {/* Mobile tags */}
+                <div className="flex sm:hidden items-center gap-2 flex-wrap mb-4">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs px-3 py-1 rounded-full border border-white/10 text-zinc-400"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-mono text-zinc-600 hover:text-zinc-400 transition-colors"
+                  >
+                    {project.link.replace('https://', '')}
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-zinc-600 hover:text-white transition-colors"
+                  >
+                    <Github size={14} />
+                  </a>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
