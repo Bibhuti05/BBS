@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useContactModal } from './ContactModalContext';
 
 const NAV_LINKS = [
   { name: 'Home',       href: '#hero',       isRoute: false },
@@ -12,6 +13,7 @@ const NAV_LINKS = [
 ];
 
 const Header: React.FC = () => {
+  const { isOpen, openContactModal } = useContactModal();
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -108,16 +110,25 @@ const Header: React.FC = () => {
           })}
         </nav>
 
-        {/* Right side */}
-        <div className="flex items-center gap-3">
-          <a
-            href="#contact"
-            onClick={(e) => scrollToSection(e, '#contact')}
-            id="header-cta"
-            className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-700 transition-colors duration-200"
-          >
-            Get in touch
-          </a>
+        {/* Right side - Absolute positioned CTA button */}
+        <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center">
+          <AnimatePresence>
+            {!isOpen && (
+              <motion.button
+                layoutId="contact-cta-button"
+                transition={{
+                  type: 'spring',
+                  damping: 28,
+                  stiffness: 260,
+                }}
+                onClick={openContactModal}
+                id="header-cta"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-zinc-900 text-white text-sm font-semibold hover:bg-zinc-700 transition-colors duration-200 cursor-pointer shadow-sm"
+              >
+                Get in touch
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </motion.header>

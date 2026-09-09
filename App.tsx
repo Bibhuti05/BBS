@@ -13,6 +13,8 @@ import MobileNav from './components/MobileNav';
 import ClickShockwave from './components/ClickShockwave';
 import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
+import { ContactModalProvider } from './components/ContactModalContext';
+import { ContactModal } from './components/ContactModal';
 import ScrollToTop from './components/ScrollToTop';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
@@ -32,27 +34,30 @@ const Portfolio: React.FC = () => {
 const App: React.FC = () => {
   return (
     <ToastProvider>
-      <ScrollToTop />
-      <div className="min-h-screen font-sans overflow-x-hidden">
-        <Background />
-        <ToastContainer />
-        <ClickShockwave />
+      <ContactModalProvider>
+        <ScrollToTop />
+        <div className="min-h-screen font-sans overflow-x-hidden">
+          <Background />
+          <ToastContainer />
+          <ClickShockwave />
+          <ContactModal />
 
-      <div className="relative z-0 flex flex-col">
-        <Header />
-        
-        <main className="flex-grow no-scrollbar">
-          <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-          </Routes>
-        </main>
-        
-        <Footer />
-        <MobileNav />
-      </div>
-    </div>
+          <div className="relative z-0 flex flex-col">
+            <Header />
+            
+            <main className="flex-grow no-scrollbar">
+              <Routes>
+                <Route path="/" element={<Portfolio />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+              </Routes>
+            </main>
+            
+            <Footer />
+            <MobileNav />
+          </div>
+        </div>
+      </ContactModalProvider>
     </ToastProvider>
   );
 };

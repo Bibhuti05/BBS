@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Mail, Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import { useToast } from './toast/ToastContext';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, Twitter, ArrowUpRight } from 'lucide-react';
 
 const CONTACT_CARDS = [
   {
@@ -40,37 +38,6 @@ const CONTACT_CARDS = [
 ];
 
 const Contact: React.FC = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const { addToast } = useToast();
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        { from_name: formState.name, to_name: 'Bibhuti', from_email: formState.email, message: formState.message },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ name: '', email: '', message: '' });
-      addToast('Message sent successfully!', 'success');
-      setTimeout(() => setIsSubmitted(false), 4000);
-    } catch (error) {
-      console.error('Failed to send email:', error);
-      setIsSubmitting(false);
-      addToast('Failed to send message. Please try again later.', 'error');
-    }
-  };
-
   return (
     <section id="contact" className="bg-[#0e0e0e] text-white py-20 md:py-28">
       <div className="container mx-auto px-6 max-w-6xl">
@@ -99,7 +66,7 @@ const Contact: React.FC = () => {
 
         {/* Social cards grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
@@ -135,96 +102,6 @@ const Contact: React.FC = () => {
               </div>
             </a>
           ))}
-        </motion.div>
-
-        {/* Contact form */}
-        <motion.div
-          className="max-w-2xl"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <p className="text-xs font-mono text-zinc-600 uppercase tracking-widest mb-8">
-            or send a message
-          </p>
-
-          <AnimatePresence mode="wait">
-            {isSubmitted ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="flex items-center gap-3 py-10"
-              >
-                <div className="p-2 rounded-full bg-accent/10">
-                  <Check size={18} className="text-accent" />
-                </div>
-                <p className="text-base text-zinc-300">
-                  Message sent — I'll get back to you soon.
-                </p>
-              </motion.div>
-            ) : (
-              <motion.form
-                key="form"
-                onSubmit={handleSubmit}
-                className="space-y-0"
-                exit={{ opacity: 0, y: -10 }}
-              >
-                {[
-                  { id: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
-                  { id: 'email', label: 'Email', type: 'email', placeholder: 'your@email.com' },
-                ].map((field) => (
-                  <div key={field.id} className="border-b border-white/8 py-5">
-                    <label htmlFor={field.id} className="block text-xs font-mono text-zinc-600 uppercase tracking-widest mb-2">
-                      {field.label}
-                    </label>
-                    <input
-                      type={field.type}
-                      id={field.id}
-                      name={field.id}
-                      value={formState[field.id as keyof typeof formState]}
-                      onChange={handleChange}
-                      required
-                      placeholder={field.placeholder}
-                      className="w-full bg-transparent text-base text-white placeholder-zinc-700 outline-none transition-colors"
-                    />
-                  </div>
-                ))}
-
-                <div className="border-b border-white/8 py-5">
-                  <label htmlFor="message" className="block text-xs font-mono text-zinc-600 uppercase tracking-widest mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formState.message}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    placeholder="Tell me about your project..."
-                    className="w-full bg-transparent text-base text-white placeholder-zinc-700 outline-none resize-none transition-colors"
-                  />
-                </div>
-
-                <div className="pt-8">
-                  <button
-                    type="submit"
-                    id="contact-submit"
-                    disabled={isSubmitting}
-                    className="group inline-flex items-center gap-2 text-base font-semibold text-white hover:text-zinc-300 transition-colors disabled:opacity-50 disabled:cursor-wait"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                      <path d="M3 13L13 3M13 3H5M13 3V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </button>
-                </div>
-              </motion.form>
-            )}
-          </AnimatePresence>
         </motion.div>
 
       </div>
