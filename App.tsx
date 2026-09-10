@@ -15,19 +15,29 @@ import { ToastProvider } from './components/toast/ToastContext';
 import ToastContainer from './components/toast/ToastContainer';
 import { ContactModalProvider } from './components/ContactModalContext';
 import { ContactModal } from './components/ContactModal';
+import { MarqueeTicker } from './components/MarqueeTicker';
 import ScrollToTop from './components/ScrollToTop';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 
 const Portfolio: React.FC = () => {
   return (
-    <>
+    <div className="relative">
+      {/* Fixed Hero section pinned to the viewport */}
       <Hero />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Contact />
-    </>
+
+      {/* Spacer matching hero height to create initial scroll space and preserve #hero anchor */}
+      <div id="hero" className="h-[calc(100vh-52px)] w-full pointer-events-none" aria-hidden="true" />
+
+      {/* Scroll-over curtain layer: Marquee and sections scroll over the fixed Hero */}
+      <div className="relative z-10 bg-[#0a0a0a] shadow-[0_-25px_60px_rgba(0,0,0,0.3)]">
+        <MarqueeTicker />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
+      </div>
+    </div>
   );
 };
 
@@ -45,7 +55,7 @@ const App: React.FC = () => {
           <div className="relative z-0 flex flex-col">
             <Header />
             
-            <main className="flex-grow no-scrollbar">
+            <main className="grow no-scrollbar">
               <Routes>
                 <Route path="/" element={<Portfolio />} />
                 <Route path="/blog" element={<Blog />} />

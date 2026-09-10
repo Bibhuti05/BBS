@@ -10,7 +10,7 @@ const socialLinks = [
 
 const Footer: React.FC = () => (
   <motion.footer
-    className="bg-[#0e0e0e] border-t border-white/5 py-8"
+    className="relative z-10 bg-[#0e0e0e] border-t border-white/5 py-8"
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}

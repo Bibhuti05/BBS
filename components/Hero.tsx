@@ -1,25 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SOCIAL_LINKS, PROJECTS } from '../constants';
-
-const MARQUEE_ITEMS = [
-  'React & Next.js',
-  'TypeScript',
-  'Node.js',
-  'PostgreSQL',
-  'Open to interesting work',
-  'Bangalore, India',
-  'Building fast & scalable apps',
-  'Full‑stack developer',
-  'React & Next.js',
-  'TypeScript',
-  'Node.js',
-  'PostgreSQL',
-  'Open to interesting work',
-  'Bangalore, India',
-  'Building fast & scalable apps',
-  'Full‑stack developer',
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -28,6 +9,12 @@ const fadeUp = {
 
 const Hero: React.FC = () => {
   const [time, setTime] = useState('');
+  const { scrollY } = useScroll();
+
+  // Subtle parallax scale and opacity as the page scrolls
+  const scale = useTransform(scrollY, [0, 600], [1, 0.94]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0.35]);
+  const y = useTransform(scrollY, [0, 600], [0, 60]);
 
   useEffect(() => {
     const tick = () => {
@@ -40,10 +27,13 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section id="hero" className="bg-[#eae8e3] min-h-screen pt-24 flex flex-col">
-      {/* Main hero content */}
+    <section
+      className="fixed top-0 left-0 w-full h-[calc(100vh-52px)] overflow-hidden bg-site-light pt-20 sm:pt-24 flex flex-col justify-between z-0"
+    >
+      {/* Main hero content with parallax animation */}
       <motion.div
-        className="flex-1 container mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+        style={{ scale, opacity, y }}
+        className="flex-1 container mx-auto px-6 py-6 sm:py-12 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-start"
         initial="hidden"
         animate="visible"
         variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
@@ -151,21 +141,6 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
       </motion.div>
-
-      {/* Marquee ticker */}
-      <div className="py-4 overflow-hidden bg-lime-500">
-        <div className="animate-marquee flex gap-0 whitespace-nowrap">
-          {MARQUEE_ITEMS.map((item, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center gap-3 text-sm text-white px-2"
-            >
-              {item}
-              <span className="w-1 h-1 rounded-full bg-accent inline-block" />
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
