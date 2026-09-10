@@ -40,7 +40,7 @@ const Toast: React.FC<ToastProps> = ({ toast }) => {
       className={`
         flex items-center gap-3 p-4 
         w-80 sm:w-96
-        bg-white/80 dark:bg-[#1e1e1c]/80 
+        bg-white/80/80 
         backdrop-blur-md 
         border ${borderColors[toast.type]} 
         rounded-xl
@@ -50,12 +50,12 @@ const Toast: React.FC<ToastProps> = ({ toast }) => {
       <div className="flex-shrink-0">
         {icons[toast.type]}
       </div>
-      <p className="flex-grow text-sm font-medium text-zinc-800 dark:text-zinc-200">
+      <p className="flex-grow text-sm font-medium text-zinc-800">
         {toast.message}
       </p>
       <button
         onClick={() => removeToast(toast.id)}
-        className="flex-shrink-0 p-1 text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-200 transition-colors rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
+        className="flex-shrink-0 p-1 text-zinc-400 hover:text-zinc-600:text-zinc-200 transition-colors rounded-full hover:bg-zinc-100:bg-zinc-800"
       >
         <X size={16} />
       </button>

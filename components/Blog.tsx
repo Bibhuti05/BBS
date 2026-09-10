@@ -26,27 +26,27 @@ const Blog: React.FC = () => {
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900:text-zinc-100 transition-colors mb-8"
             >
               <ArrowLeft size={16} />
               Back to portfolio
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
-              <BookOpen size={28} className="text-zinc-700 dark:text-zinc-300" />
-              <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">
+              <BookOpen size={28} className="text-zinc-700" />
+              <h1 className="text-4xl font-bold text-zinc-900">
                 Blog
               </h1>
             </div>
 
-            <p className="text-zinc-600 dark:text-zinc-400 text-lg">
+            <p className="text-zinc-600 text-lg">
               Thoughts on web development, TypeScript, React, and building things that work.
             </p>
           </motion.div>
 
           <div className="grid gap-6">
             {posts.length === 0 && (
-              <p className="text-zinc-500 dark:text-zinc-400 text-center py-20">
+              <p className="text-zinc-500 text-center py-20">
                 No posts yet. Stay tuned!
               </p>
             )}

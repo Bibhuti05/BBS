@@ -1,206 +1,220 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import {
-  SiReact,
-  SiTypescript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiJavascript,
-  SiPostgresql,
-  SiMysql,
-  SiSqlite,
-  SiMongodb,
-  SiRedis,
-  SiPrisma,
-  SiSocketdotio,
-  SiGithub,
-  SiGit,
-  SiNpm,
-  SiBun,
-  SiHtml5,
-  SiCss,
-} from 'react-icons/si';
+import { ArrowUpRight } from 'lucide-react';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
-const SKILL_ICONS: Record<string, React.FC<{ size: number; color?: string }>> = {
-  'React / Next.js': SiReact,
-  'TypeScript': SiTypescript,
-  'Tailwind CSS': SiTailwindcss,
-  'React Native': SiReact,
-  'Node.js': SiNodedotjs,
-  'JavaScript': SiJavascript,
-  'PostgreSQL': SiPostgresql,
-  'MySQL': SiMysql,
-  'SQLite': SiSqlite,
-  'MongoDB': SiMongodb,
-  'Redis': SiRedis,
-  'Prisma': SiPrisma,
-  'Socket.io': SiSocketdotio,
-  'GitHub': SiGithub,
-  'Git': SiGit,
-  'npm': SiNpm,
-  'Bun': SiBun,
-  'HTML': SiHtml5,
-  'CSS': SiCss,
-};
-
-interface SkillGroup {
-  label: string;
-  skills: string[];
-}
-
-const SKILL_GROUPS: SkillGroup[] = [
+const SKILL_GROUPS = [
   {
     label: 'Frontend',
-    skills: ['React / Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'React Native', 'HTML', 'CSS'],
+    skills: ['React / Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
   },
   {
     label: 'Backend',
-    skills: ['Node.js', 'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB', 'Redis', 'Prisma', 'Socket.io'],
+    skills: ['Node.js', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Prisma', 'Socket.io'],
   },
   {
     label: 'Tools',
-    skills: ['Git', 'GitHub', 'npm', 'Bun'],
+    skills: ['Git', 'GitHub', 'Bun', 'Docker'],
   },
 ];
 
-const CARD_W = 200;
-const GAP = 16;
-const MAX_OFFSET = 5;
-const BASE_ROT = 8;
-const BASE_SKEW_X = 5;
-const BASE_SKEW_Y = 16;
-const BASE_SCALE = 0.1;
-const SCROLL_SPEED = 0.5;
+const STATS = [
+  { value: '3+', label: 'Years building' },
+  { value: '10+', label: 'Products shipped' },
+  { value: '200+', label: 'Issues resolved' },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+/* ───── live clock hook ───── */
+function useLiveClock() {
+  const [time, setTime] = useState('');
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      setTime(
+        now.toLocaleTimeString('en-IN', {
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+          timeZone: 'Asia/Kolkata',
+        })
+      );
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return time;
+}
+
+/* ───── card wrapper ───── */
+const Card: React.FC<{
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}> = ({ children, className = '', delay = 0 }) => (
+  <motion.div
+    className={`bg-[#141414] rounded-2xl border border-white/[0.06] ${className}`}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: '-50px' }}
+    transition={{ duration: 0.5, delay }}
+  >
+    {children}
+  </motion.div>
+);
 
 const Skills: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const pausedRef = useRef(false);
-  const [offsets, setOffsets] = useState<number[]>([]);
-
-  const baseSkills = SKILL_GROUPS.flatMap((g) => g.skills);
-  const allSkills = [...baseSkills, ...baseSkills, ...baseSkills];
-
-  const totalSetWidth = baseSkills.length * (CARD_W + GAP);
-
-  const updateOffsets = useCallback(() => {
-    const el = containerRef.current;
-    if (!el) return;
-
-    const scrollCenter = el.scrollLeft + el.clientWidth / 2;
-
-    setOffsets(
-      allSkills.map((_, i) => {
-        const cardCenter = i * (CARD_W + GAP) + CARD_W / 2;
-        return (cardCenter - scrollCenter) / (CARD_W + GAP);
-      })
-    );
-  }, [allSkills.length]);
-
-  useEffect(() => {
-    updateOffsets();
-    const el = containerRef.current;
-    if (!el) return;
-
-    // Start at the beginning of the second set for seamless loop
-    el.scrollLeft = totalSetWidth;
-
-    // Always update offsets on scroll (even when paused / user scrolling manually)
-    const onScroll = () => updateOffsets();
-    el.addEventListener('scroll', onScroll, { passive: true });
-
-    let raf: number;
-
-    const tick = () => {
-      if (!pausedRef.current && el) {
-        el.scrollLeft += SCROLL_SPEED;
-
-        // Loop: when we've scrolled past the second set, jump back
-        if (el.scrollLeft >= totalSetWidth * 2) {
-          el.scrollLeft = totalSetWidth;
-        }
-      }
-      raf = requestAnimationFrame(tick);
-    };
-
-    raf = requestAnimationFrame(tick);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      el.removeEventListener('scroll', onScroll);
-    };
-  }, [updateOffsets, totalSetWidth]);
-
-  const handleMouseEnter = () => { pausedRef.current = true; };
-  const handleMouseLeave = () => { pausedRef.current = false; };
+  const clock = useLiveClock();
 
   return (
-    <section id="skills" className="py-24">
+    <section id="skills" className="bg-[#0a0a0a] text-white py-20 md:py-28">
       <div className="container mx-auto px-6">
+
+        {/* ─── Section header ─── */}
         <motion.div
-          className="mb-20"
+          className="flex items-start justify-between mb-10"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
+          viewport={{ once: true, margin: '-80px' }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
         >
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-zinc-900 dark:text-white mb-6 tracking-tight"
+            className="text-3xl md:text-5xl font-bold tracking-tight text-white italic"
             variants={fadeUp}
           >
-            Technical <span className="text-zinc-400 dark:text-[#78716c]">Proficiency</span>
+            Where I'm at, currently.
           </motion.h2>
           <motion.p
-            className="text-lg text-zinc-500 dark:text-[#C2BDB2] max-w-xl"
+            className="hidden md:block text-xs font-mono text-zinc-600 mt-2"
             variants={fadeUp}
           >
-            Technologies and tools I use to build performant and scalable applications.
+            updated as things change
           </motion.p>
         </motion.div>
 
-        <div
-          ref={containerRef}
-          className="flex overflow-x-auto scrollbar-thin py-8"
-          style={{ gap: `${GAP}px` }}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {allSkills.map((skillName, i) => {
-            const Icon = SKILL_ICONS[skillName];
-            const raw = offsets[i] ?? 0;
-            const clamped = Math.max(-MAX_OFFSET, Math.min(MAX_OFFSET, raw));
-            const t = clamped / MAX_OFFSET;
+        {/* ─── Masonry bento grid ─── */}
+        {/*
+          Desktop layout (matching reference):
+          ┌──────────────────────┬─────────────────────────────┐
+          │                      │      latest video           │
+          │     building         ├──────────────┬──────────────┤
+          │     (tall card)      │   my time    │   learning   │
+          ├───────────────────────┴──────────────┴──────────────┤
+          │   what I reach for              │     so far       │
+          └─────────────────────────────────┴──────────────────┘
+        */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3">
 
-            const rotate = t * BASE_ROT;
-            const skewX = t * -BASE_SKEW_X;
-            const skewY = t * BASE_SKEW_Y;
-            const scale = 1 - Math.abs(t) ** 1.5 * (1 - BASE_SCALE);
-            const translateY = Math.abs(t) * 8;
-            const opacity = 1 - Math.abs(t) ** 1.5 * 0.95;
+          {/* ── Row 1 + 2: Building card (tall, left) ── */}
+          <Card className="lg:col-span-5 lg:row-span-2 p-7 flex flex-col justify-between min-h-[320px]" delay={0}>
+            <div>
+              <p className="text-[11px] font-mono text-zinc-600 tracking-widest mb-5">
+                building
+              </p>
+              <p className="text-xl md:text-2xl font-semibold text-white leading-snug">
+                Building Xplore — an anonymous video &amp; text chat app with WebRTC, real-time socket connections, and peer-to-peer streaming. Currently deep in performance tuning and scaling.
+              </p>
+            </div>
+            <div className="mt-8 pt-5 border-t border-white/[0.06] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs font-mono text-zinc-500">
+                Software Engineer&nbsp;&nbsp;/&nbsp;&nbsp;@bibhuticodes&nbsp;&nbsp;/&nbsp;&nbsp;Bangalore
+              </span>
+            </div>
+          </Card>
 
-            return (
-              <motion.div
-                key={`${skillName}-${i}`}
-                style={{
-                  transform: `rotate(${rotate}deg) skew(${skewX}deg, ${skewY}deg) scale(${scale}) translateY(${translateY}px)`,
-                  opacity,
-                  willChange: 'transform, opacity',
-                }}
-                className="flex h-[200px] w-[200px] shrink-0 flex-col items-center justify-center gap-4 rounded-2xl border border-[#2e2e2c] bg-white/60 dark:bg-[#1c1c1a] p-6"
-              >
-                <div className="text-zinc-500 dark:text-[#A8A29E]">
-                  {Icon && <Icon size={48} />}
+          {/* ── Row 1 right: Latest video card ── */}
+          <Card className="lg:col-span-7 p-5 flex items-center gap-5" delay={0.05}>
+            <div className="flex-1">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-[11px] font-mono text-zinc-600 tracking-widest">
+                  latest project
+                </p>
+                <a
+                  href="https://xplore-production.up.railway.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-white hover:border-white/25 transition-colors"
+                >
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <img
+                  src="/assets/xplore.png"
+                  alt="Xplore preview"
+                  className="w-20 h-14 rounded-lg object-cover flex-shrink-0 bg-zinc-800"
+                />
+                <div>
+                  <p className="text-sm font-semibold text-white">Xplore — Anonymous Video Chat</p>
+                  <p className="text-xs font-mono text-zinc-600 mt-0.5">Next.js · WebRTC · Socket.io</p>
                 </div>
-                <span className="text-center text-base font-medium text-zinc-700 dark:text-[#DAD6CE]">
-                  {skillName}
-                </span>
-              </motion.div>
-            );
-          })}
+              </div>
+            </div>
+          </Card>
+
+          {/* ── Row 2 right: My time + Learning (side by side) ── */}
+          <Card className="lg:col-span-4 p-5" delay={0.1}>
+            <p className="text-[11px] font-mono text-zinc-600 tracking-widest mb-3">
+              my time
+            </p>
+            <p className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+              {clock}
+            </p>
+            <p className="text-xs font-mono text-zinc-600 mt-2">Bangalore</p>
+          </Card>
+
+          <Card className="lg:col-span-3 p-5" delay={0.15}>
+            <p className="text-[11px] font-mono text-zinc-600 tracking-widest mb-3">
+              learning
+            </p>
+            <p className="text-sm text-zinc-300 leading-relaxed">
+              Getting comfortable with advanced database query planning, system design patterns, and distributed architectures.
+            </p>
+          </Card>
+
+          {/* ── Row 3: Skills pills + Stats ── */}
+          <Card className="lg:col-span-8 p-7" delay={0.2}>
+            <p className="text-[11px] font-mono text-zinc-600 tracking-widest mb-5">
+              what I reach for
+            </p>
+            <div className="space-y-5">
+              {SKILL_GROUPS.map((group) => (
+                <div key={group.label} className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-zinc-600 w-16 flex-shrink-0">
+                    {group.label}
+                  </span>
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 rounded-full border border-white/10 text-xs text-zinc-400 hover:border-white/25 hover:text-white transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card className="lg:col-span-4 p-7" delay={0.25}>
+            <p className="text-[11px] font-mono text-zinc-600 tracking-widest mb-5">
+              so far
+            </p>
+            <div className="space-y-4">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="flex items-baseline gap-3">
+                  <p className="text-3xl md:text-4xl font-bold text-white">{stat.value}</p>
+                  <p className="text-xs font-mono text-zinc-600">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </Card>
+
         </div>
       </div>
     </section>
