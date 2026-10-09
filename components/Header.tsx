@@ -5,11 +5,10 @@ import { useContactModal } from './ContactModalContext';
 
 const NAV_LINKS = [
   { name: 'Home',       href: '#hero',       isRoute: false },
-  { name: 'About',      href: '#skills',     isRoute: false },
   { name: 'Work',       href: '#experience', isRoute: false },
   { name: 'Projects',   href: '#portfolio',  isRoute: false },
-  { name: 'Blog',       href: '/blog',       isRoute: true  },
   { name: 'Contact',    href: '#contact',    isRoute: false },
+  { name: 'Blog',       href: '/blog',       isRoute: true  },
 ];
 
 const Header: React.FC = () => {
@@ -25,14 +24,16 @@ const Header: React.FC = () => {
       setScrolled(window.scrollY > 40);
       if (!isHomePage) return;
       const scrollPosition = window.scrollY + 200;
+      let active = 'hero';
       for (const link of NAV_LINKS) {
         if (link.isRoute) continue;
         const id = link.href.replace('#', '');
         const el = document.getElementById(id);
-        if (el && scrollPosition >= el.offsetTop && scrollPosition < el.offsetTop + el.offsetHeight) {
-          setActiveSection(id);
+        if (el && scrollPosition >= el.offsetTop) {
+          active = id;
         }
       }
+      setActiveSection(active);
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll();
@@ -76,7 +77,10 @@ const Header: React.FC = () => {
           {NAV_LINKS.map((link) => {
             const isActive = link.isRoute
               ? location.pathname.startsWith('/blog')
-              : isHomePage && activeSection === link.href.replace('#', '');
+              : isHomePage && (
+                  (activeSection === link.href.replace('#', '')) ||
+                  (link.href === '#hero' && (window.scrollY < 80 || activeSection === 'hero'))
+                );
 
             if (link.isRoute) {
               return (

@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "overthinking-and-fixed-mindset",
+    "title": "The Physics of Overthinking: Living Inside Your Head and the Cost of Inaction",
+    "date": "2026-07-15",
+    "excerpt": "An honest observation on how an overactive mind creates a loop of inaction, and why breaking the cycle requires moving out of your head and into reality.",
+    "tags": [
+      "Personal Growth",
+      "Mindset",
+      "Mental Health",
+      "Reflections"
+    ],
+    "coverImage": "https://valuehubkenya.co.ke/wp-content/uploads/2026/02/mindset-valuehubkenya.co_.ke1_.jpg"
+  },
+  {
+    "slug": "building-portfolio-with-react-threejs",
+    "title": "Building a Portfolio with React and Three.js",
+    "date": "2026-07-01",
+    "excerpt": "How I built an interactive 3D portfolio website using React, Three.js, Framer Motion, and Tailwind CSS — and the lessons I learned along the way.",
+    "tags": [
+      "React",
+      "Three.js",
+      "Framer Motion",
+      "Portfolio"
+    ]
+  },
+  {
+    "slug": "why-typescript-worth-learning-curve",
+    "title": "Why TypeScript is Worth the Learning Curve",
+    "date": "2026-06-15",
+    "excerpt": "TypeScript adds complexity, but the payoff in type safety, developer experience, and long-term maintainability makes it indispensable for serious projects.",
+    "tags": [
+      "TypeScript",
+      "JavaScript",
+      "DX"
+    ]
+  }
+]

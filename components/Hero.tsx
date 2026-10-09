@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="space-y-0 divide-y divide-black/8">
-            {PROJECTS.map((project, i) => (
+            {PROJECTS.filter((p) => p.id !== 1).slice(0, 3).map((project, i) => (
               <a
                 key={project.id}
                 href={project.link}

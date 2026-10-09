@@ -114,14 +114,24 @@ export const EXPERIENCES: Experience[] = [
 
 export const PROJECTS: Project[] = [
   {
-    id: 1,
-    title: "UfdLoader",
+    id: 4,
+    title: "Localbox",
     description:
-      "Terminal-based download accelerator built with multi-connection technology. Features parallel segmented downloads, resume support, cross-platform native binaries, real-time terminal UI with per-connection progress bars, and an interactive folder picker.",
-    tags: ["Bun", "TypeScript", "React", "Ink", "Axios"],
-    link: "https://1in1b.github.io/ufd/",
-    github: "https://github.com/1IN1B/ufd",
-    image: "/assets/ufdloader.png",
+      "Browser-based PDF and audio utilities with no file uploads. Processing stays on device with optional anonymous analytics stored in Turso.",
+    tags: ["Next.js", "TypeScript", "PDF", "FFmpeg", "Turso"],
+    link: "https://localbox-dusky.vercel.app/",
+    github: "https://github.com/1IN1B/localbox",
+    image: "/assets/xplore.png",
+  },
+  {
+    id: 3,
+    title: "TicketGo",
+    description:
+      "Modern ticket management system with authentication, role-based access, form validation, and database integration. Built with Next.js, TypeScript, MySQL, NextAuth, Radix UI, and Zustand for state management.",
+    tags: ["Next.js", "TypeScript", "MySQL", "NextAuth", "Zustand"],
+    link: "https://ticketgo-wine.vercel.app/",
+    github: "https://github.com/1IN1B/ticketgo",
+    image: "/assets/ticketgo.png",
   },
   {
     id: 2,
@@ -134,13 +144,33 @@ export const PROJECTS: Project[] = [
     image: "/assets/xplore.png",
   },
   {
-    id: 3,
-    title: "TicketGo",
+    id: 5,
+    title: "Cliptor",
     description:
-      "Modern ticket management system with authentication, role-based access, form validation, and database integration. Built with Next.js, TypeScript, MySQL, NextAuth, Radix UI, and Zustand for state management.",
-    tags: ["Next.js", "TypeScript", "MySQL", "NextAuth", "Zustand"],
-    link: "https://ticketgo-wine.vercel.app/",
-    github: "https://github.com/1IN1B/ticketgo",
-    image: "/assets/ticketgo.png",
+      "macOS menu bar clipboard history utility that monitors clipboard changes, maintains searchable history, supports keyboard navigation, auto-paste, and link previews.",
+    tags: ["Electron", "JavaScript", "macOS", "Menu Bar"],
+    link: "https://1in1b.github.io/cliptor/",
+    github: "https://github.com/1IN1B/cliptor",
+    image: "/assets/ufdloader.png",
+  },
+  {
+    id: 6,
+    title: "Barely",
+    description:
+      "Invisible, always-on-top AI overlay assistant — a compact translucent panel that floats over apps with AI chat, voice I/O, and screen-share invisibility. Fully local.",
+    tags: ["Electron", "React", "TypeScript", "Vite", "AI"],
+    link: "https://bibhuti.github.io/barely/",
+    github: "https://github.com/1IN1B/Barely",
+    image: "/assets/portfolio.png",
+  },
+  {
+    id: 1,
+    title: "UfdLoader",
+    description:
+      "Terminal-based download accelerator built with multi-connection technology. Features parallel segmented downloads, resume support, cross-platform native binaries, real-time terminal UI with per-connection progress bars, and an interactive folder picker.",
+    tags: ["Bun", "TypeScript", "React", "Ink", "Axios"],
+    link: "https://1in1b.github.io/ufd/",
+    github: "https://github.com/1IN1B/ufd",
+    image: "/assets/ufdloader.png",
   },
 ];
