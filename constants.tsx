@@ -115,13 +115,13 @@ export const EXPERIENCES: Experience[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "UfdLoader",
+    title: "Localbox",
     description:
-      "Terminal-based download accelerator built with multi-connection technology. Features parallel segmented downloads, resume support, cross-platform native binaries, real-time terminal UI with per-connection progress bars, and an interactive folder picker.",
-    tags: ["Bun", "TypeScript", "React", "Ink", "Axios"],
-    link: "https://1in1b.github.io/ufd/",
-    github: "https://github.com/1IN1B/ufd",
-    image: "/assets/ufdloader.png",
+      "Browser-based utility website with handy PDF and audio tools. Provides a simple, easy-to-use interface with zero-install, on-device processing so files never need to be uploaded.",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    link: "https://localbox-dusky.vercel.app",
+    github: "https://github.com/1IN1B/localbox",
+    image: "/assets/localbox.png",
   },
   {
     id: 2,
